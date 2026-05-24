@@ -1,0 +1,29 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Grünbeck Cloud Authentifizierung",
+        "description": "Bitte geben Sie Ihre Grünbeck Cloud Zugangsdaten ein, um Ihre softliQ SE- oder SD-Wasserenthärtungsanlage zu verbinden. Hinweis: Die Anmeldung unterscheidet strikt zwischen E-Mail-Endungen (z. B. @googlemail.com vs. @gmail.com). Bitte nutzen Sie die exakte E-Mail-Adresse Ihres Grünbeck-Kontos.",
+        "data": {
+          "username": "E-Mail-Adresse",
+          "password": "Passwort"
+        }
+      },
+      "device": {
+        "title": "Gerät auswählen",
+        "description": "Wählen Sie die Grünbeck Wasserenthärtungsanlage aus, die Sie integrieren möchten.",
+        "data": {
+          "device_id": "Enthärtungsanlage"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Ungültiger Benutzername oder Passwort. Bitte überprüfen Sie Ihre Zugangsdaten (insbesondere @googlemail.com vs. @gmail.com).",
+      "cannot_connect": "Verbindung mit der Grünbeck Cloud API fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung.",
+      "no_devices": "Es wurden keine registrierten Grünbeck Geräte in diesem Cloud-Konto gefunden."
+    },
+    "abort": {
+      "already_configured": "Dieses Grünbeck-Gerät ist bereits in Home Assistant konfiguriert."
+    }
+  }
+}

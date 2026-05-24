@@ -1,0 +1,29 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Grünbeck Cloud Authentication",
+        "description": "Please enter your Grünbeck Cloud username and password to connect your softliQ SE or SD water softener. Note: The login is sensitive to your email domain (e.g. @googlemail.com vs @gmail.com). Please use the exact email address associated with your Grünbeck Cloud account.",
+        "data": {
+          "username": "Email Address",
+          "password": "Password"
+        }
+      },
+      "device": {
+        "title": "Select Device",
+        "description": "Select the Grünbeck water softener device you wish to integrate.",
+        "data": {
+          "device_id": "Softener Device"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid username or password. Please verify your credentials (check @googlemail.com vs @gmail.com).",
+      "cannot_connect": "Failed to connect to the Grünbeck Cloud API. Please check your internet connection and try again.",
+      "no_devices": "No registered Grünbeck water softeners were found in this cloud account."
+    },
+    "abort": {
+      "already_configured": "This Grünbeck device is already configured in Home Assistant."
+    }
+  }
+}
