@@ -25,5 +25,22 @@
     "abort": {
       "already_configured": "This Grünbeck device is already configured in Home Assistant."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Grünbeck Cloud SE Settings",
+        "description": "Configure dynamic settings for your water softener integration. You can update your cloud password or adjust the high-frequency polling interval.",
+        "data": {
+          "password": "Cloud Password",
+          "scan_interval": "Polling Interval (seconds, min 10s)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid username or password. Please verify your new credentials.",
+      "cannot_connect": "Failed to connect to the Grünbeck Cloud API. Please check your internet connection.",
+      "invalid_scan_interval": "The polling interval must be at least 10 seconds to keep the cloud API stable."
+    }
   }
 }

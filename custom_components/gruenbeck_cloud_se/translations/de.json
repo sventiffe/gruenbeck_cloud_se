@@ -25,5 +25,22 @@
     "abort": {
       "already_configured": "Dieses Grünbeck-Gerät ist bereits in Home Assistant konfiguriert."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Grünbeck Cloud SE Einstellungen",
+        "description": "Konfigurieren Sie dynamische Einstellungen für Ihre Wasserenthärtungsanlage. Sie können Ihr Cloud-Passwort aktualisieren oder das Abfrageintervall anpassen.",
+        "data": {
+          "password": "Cloud-Passwort",
+          "scan_interval": "Abfrageintervall (Sekunden, mind. 10s)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Ungültiger Benutzername oder Passwort. Bitte überprüfen Sie Ihre neuen Zugangsdaten.",
+      "cannot_connect": "Verbindung mit der Grünbeck Cloud API fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung.",
+      "invalid_scan_interval": "Das Abfrageintervall muss mindestens 10 Sekunden betragen, um die API-Stabilität zu gewährleisten."
+    }
   }
 }

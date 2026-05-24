@@ -19,6 +19,7 @@ class GruenbeckDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         hass: HomeAssistant,
         api: PyGruenbeckCloud,
         device_id: str,
+        scan_interval: int,
     ) -> None:
         """Initialize the coordinator."""
         self.api = api
@@ -28,8 +29,9 @@ class GruenbeckDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             hass,
             LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=DEFAULT_SCAN_INTERVAL),
+            update_interval=timedelta(seconds=scan_interval),
         )
+
 
     async def _async_update_data(self) -> dict[str, Any]:
         """Fetch data from Grünbeck Cloud using the 5-step realtime sequence."""

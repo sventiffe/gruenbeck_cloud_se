@@ -5,7 +5,7 @@
 
 A custom, high-frequency real-time Home Assistant integration specifically designed for **Grünbeck SE Series** (`softliQ.SE`, `softliQ.SD`) cloud-connected water softeners. 
 
-Unlike general-purpose cloud integrations that poll infrequently, this integration implements a dedicated **5-step real-time connection sequence** that forces a cloud refresh and polls live device metrics every **60 seconds**, capturing precise flow rates and water status.
+Unlike general-purpose cloud integrations that poll infrequently, this integration implements a dedicated **5-step real-time connection sequence** that forces a cloud refresh and polls live device metrics every **15 seconds** (fully configurable in the UI), capturing precise flow rates and water status. For more details on the project, limitations, and Grünbeck's API stance, see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md).
 
 > [!IMPORTANT]
 > **Prerequisites & Incompatibility Warnings**
@@ -17,7 +17,7 @@ Unlike general-purpose cloud integrations that poll infrequently, this integrati
 
 ## Key Features
 
-*   **Real-time Polling (60s Updates)**: Polls exchanger capacities, percentages, flow rates, salt levels, and error states dynamically.
+*   **Real-time Polling (Configurable, Default 15s)**: Polls exchanger capacities, percentages, flow rates, salt levels, and error states dynamically.
 *   **Duplex Calculated Water Consumption**: Water consumption is not directly reported by the Grünbeck API. This integration solves that by monitoring capacity decreases across **both** Exchangers (duplex system) and accumulating precise water consumption in Liters (`L`), persisting it safely across Home Assistant restarts.
 *   **User-Friendly Config Flow**: Set up the integration directly via the Home Assistant integrations frontend (simply input your username and password, then select your water softener from the discovered list).
 *   **HACS Ready**: Formatted according to the standard HACS custom repository layout.
@@ -71,6 +71,12 @@ Unlike general-purpose cloud integrations that poll infrequently, this integrati
 3.  Search for **Grünbeck Cloud SE Series** and select it.
 4.  Enter your Grünbeck Cloud username and password.
 5.  Select your discovered water softener device (e.g. *YOUR_DEVICE_NAME*) from the dropdown and complete setup.
+
+### Dynamic Options (Password & Polling Interval)
+
+Once configured, you can click the **Configure** (German: *Konfigurieren*) button on the integration's card in **Settings -> Devices & Services** to dynamically manage your settings without having to delete the integration or lose your calculated water consumption total:
+* **Cloud Password**: Easily update your password if you rotate it. The integration will securely re-authenticate with the Grünbeck Cloud automatically.
+* **Polling Interval**: Adjust the real-time polling frequency in seconds. The default is **15 seconds** (for high-fidelity flow rates), with a strict minimum limit of **10 seconds** to maintain API connection stability (see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md) for rate-limiting guidelines).
 
 ---
 

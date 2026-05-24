@@ -76,8 +76,17 @@ class ConfigFlow:
         return {"type": "form", "step_id": step_id, "data_schema": data_schema, "errors": errors}
     def async_create_entry(self, title, data):
         return {"type": "create_entry", "title": title, "data": data}
+class OptionsFlow:
+    def __init__(self, config_entry):
+        self.config_entry = config_entry
+    def async_show_form(self, step_id, data_schema, errors=None):
+        return {"type": "form", "step_id": step_id, "data_schema": data_schema, "errors": errors}
+    def async_create_entry(self, title, data):
+        return {"type": "create_entry", "title": title, "data": data}
 homeassistant.config_entries.ConfigFlow = ConfigFlow
+homeassistant.config_entries.OptionsFlow = OptionsFlow
 sys.modules["homeassistant.config_entries"] = homeassistant.config_entries
+
 
 # data_entry_flow
 homeassistant.data_entry_flow = types.ModuleType("homeassistant.data_entry_flow")
@@ -217,8 +226,10 @@ async def main():
     coordinator = GruenbeckDataUpdateCoordinator(
         hass=object(),
         api=api,
-        device_id=DEVICE_ID
+        device_id=DEVICE_ID,
+        scan_interval=15
     )
+
     
     # Run the first refresh
     print("Polling API (this executes the 5-step sequence)...")
