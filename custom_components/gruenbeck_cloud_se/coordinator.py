@@ -72,20 +72,34 @@ class GruenbeckDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                         async with self.api.session.get(
                             url, headers=headers
                         ) as resp:
-                            if endpoint == "/update":
+                            if resp.status != 200:
+                                LOGGER.warning(
+                                    "HTTP error %d during GET %s: %s",
+                                    resp.status,
+                                    endpoint,
+                                    await resp.text(),
+                                )
+                            elif endpoint == "/update":
                                 update_data = await resp.json()
                     else:
                         async with self.api.session.post(
                             url, headers=headers, json={}
                         ) as resp:
-                            pass
+                            if resp.status not in (200, 204):
+                                LOGGER.warning(
+                                    "HTTP error %d during POST %s: %s",
+                                    resp.status,
+                                    endpoint,
+                                    await resp.text(),
+                                )
                 except Exception as step_err:
-                    LOGGER.debug(
-                        "Error during endpoint %s: %s", endpoint, step_err
+                    LOGGER.warning(
+                        "Exception during endpoint %s: %s", endpoint, step_err
                     )
 
             if not update_data:
                 raise UpdateFailed("Failed to retrieve real-time update data")
+
 
             # Verify the response represents a valid update dictionary
             if not isinstance(update_data, dict):
