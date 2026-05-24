@@ -7,7 +7,13 @@ A custom, high-frequency real-time Home Assistant integration specifically desig
 
 Unlike general-purpose cloud integrations that poll infrequently, this integration implements a dedicated **5-step real-time connection sequence** that forces a cloud refresh and polls live device metrics every **60 seconds**, capturing precise flow rates and water status.
 
+> [!IMPORTANT]
+> **Prerequisites & Incompatibility Warnings**
+> 1. **Uninstall Legacy Integrations First**: Home Assistant restricts loading multiple versions of the same dependency library (`pygruenbeck_cloud`). If you currently have the general-purpose `hagruenbeck_cloud` integration installed, you **must completely uninstall it and restart Home Assistant** before installing this integration to avoid library dependency conflicts (`Unable to login`).
+> 2. **Email Domain Login Sensitivity**: The Grünbeck Cloud API login is strictly domain-sensitive. You must enter your exact registered email address (e.g. `@googlemail.com` vs `@gmail.com` as appropriate).
+
 ---
+
 
 ## Key Features
 

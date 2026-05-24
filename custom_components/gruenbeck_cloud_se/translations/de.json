@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Grünbeck Cloud Authentifizierung",
-        "description": "Bitte geben Sie Ihre Grünbeck Cloud Zugangsdaten ein, um Ihre softliQ SE- oder SD-Wasserenthärtungsanlage zu verbinden. Hinweis: Die Anmeldung unterscheidet strikt zwischen E-Mail-Endungen (z. B. @googlemail.com vs. @gmail.com). Bitte nutzen Sie die exakte E-Mail-Adresse Ihres Grünbeck-Kontos.",
+        "description": "Bitte geben Sie Ihre Grünbeck Cloud Zugangsdaten ein, um Ihre softliQ SE- oder SD-Wasserenthärtungsanlage zu verbinden.\n\nHinweise:\n1. Die Anmeldung unterscheidet strikt zwischen E-Mail-Endungen (z. B. @googlemail.com vs. @gmail.com). Bitte nutzen Sie die exakte E-Mail-Adresse Ihres Grünbeck-Kontos.\n2. Um Abhängigkeitskonflikte zu vermeiden, stellen Sie bitte sicher, dass andere Grünbeck-Integrationen aus HACS deinstalliert wurden und Home Assistant neu gestartet wurde, bevor Sie fortfahren.",
         "data": {
           "username": "E-Mail-Adresse",
           "password": "Passwort"

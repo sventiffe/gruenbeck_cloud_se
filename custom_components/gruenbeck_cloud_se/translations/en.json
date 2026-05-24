@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Grünbeck Cloud Authentication",
-        "description": "Please enter your Grünbeck Cloud username and password to connect your softliQ SE or SD water softener. Note: The login is sensitive to your email domain (e.g. @googlemail.com vs @gmail.com). Please use the exact email address associated with your Grünbeck Cloud account.",
+        "description": "Please enter your Grünbeck Cloud username and password to connect your softliQ SE or SD water softener.\n\nNotes:\n1. The login is sensitive to your email domain (e.g. @googlemail.com vs @gmail.com). Please use the exact email address associated with your Grünbeck Cloud account.\n2. To avoid dependency conflicts, please ensure you have uninstalled any other Grünbeck integrations from HACS and restarted Home Assistant before continuing.",
         "data": {
           "username": "Email Address",
           "password": "Password"

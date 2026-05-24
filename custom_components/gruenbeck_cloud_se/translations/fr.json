@@ -1,0 +1,29 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Authentification Grünbeck Cloud",
+        "description": "Veuillez saisir votre nom d'utilisateur et votre mot de passe Grünbeck Cloud pour connecter votre adoucisseur d'eau softliQ SE ou SD.\n\nRemarques :\n1. La connexion est sensible au domaine de votre e-mail (ex: @googlemail.com vs @gmail.com). Utilisez l'adresse exacte de votre compte.\n2. Pour éviter tout conflit de dépendances, désinstallez toute autre intégration Grünbeck HACS et redémarrez Home Assistant avant de continuer.",
+        "data": {
+          "username": "Adresse e-mail",
+          "password": "Mot de passe"
+         }
+      },
+      "device": {
+        "title": "Sélectionner l'appareil",
+        "description": "Sélectionnez l'adoucisseur d'eau Grünbeck que vous souhaitez intégrer.",
+        "data": {
+          "device_id": "Adoucisseur d'eau"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Nom d'utilisateur ou mot de passe invalide. Veuillez vérifier vos identifiants (vérifiez @googlemail.com vs @gmail.com).",
+      "cannot_connect": "Échec de connexion à l'API Grünbeck Cloud. Veuillez vérifier votre connexion Internet et réessayer.",
+      "no_devices": "Aucun adoucisseur d'eau Grünbeck enregistré n'a été trouvé sur ce compte cloud."
+    },
+    "abort": {
+      "already_configured": "Cet appareil Grünbeck est déjà configuré dans Home Assistant."
+    }
+  }
+}

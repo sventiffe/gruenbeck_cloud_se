@@ -2,7 +2,13 @@
 
 This guide explains how to install and configure the **Grünbeck Cloud SE Series** custom Home Assistant integration.
 
+> [!IMPORTANT]
+> **Prerequisites & Incompatibilities**
+> 1. **Uninstall Legacy Integrations First**: Home Assistant can only load one version of the underlying `pygruenbeck_cloud` library. If you have any other Grünbeck HACS integrations installed (such as the general-purpose `hagruenbeck_cloud` integration), you **must uninstall them completely and restart Home Assistant** before setting up this integration. Failure to do so will cause library version conflicts and result in `Unable to login` / connection failures.
+> 2. **Email Domain Sensitivity**: The Grünbeck Cloud API is strictly domain-sensitive. You **must** use the exact email domain your account was registered with (e.g., `@googlemail.com` vs `@gmail.com`).
+
 ---
+
 
 ## Step 1: Add the Custom Repository to HACS
 
