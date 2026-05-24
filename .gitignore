@@ -31,7 +31,6 @@ venv/
 # Home Assistant local test files
 .storage/
 *.log
-simulate.py
 
 # macOS
 .DS_Store
