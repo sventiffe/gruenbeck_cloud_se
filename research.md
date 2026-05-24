@@ -102,3 +102,17 @@ We will structure the new integration in `/Users/sven/homeassistant/custom_compo
 - `coordinator.py`: Core polling mechanism that runs the 5-step sequence on a 60-second timer.
 - `sensor.py` and `binary_sensor.py`: Platform-specific entity setups.
 - `entity.py`: Base entity class containing standard device information.
+
+---
+
+## Device Telemetry & Physical Error Behavior
+
+Real-world testing has confirmed a critical behavior regarding device error handling and the Grünbeck Cloud API:
+
+1. **Telemetry Freeze**: When the physical Grünbeck water softener experiences and displays an active error message on its device screen, **it ceases all telemetry uploads** to the cloud.
+2. **State Impact**:
+   - The cloud API continues responding, but all metrics (flow rates, capacities, etc.) represent frozen/outdated states.
+   - The mobile app and this integration will display stale, frozen numbers.
+   - The `hasError` payload field will remain `true`, exposing a `Problem` state in Home Assistant's `Device Error` binary sensor.
+3. **Recovery Flow**: Once the error is physically acknowledged/cleared on the device's display screen, the softener immediately resumes telemetry transmissions. The `Device Error` sensor in Home Assistant returns to `OK` (or `false`), and live sensor updates resume instantly.
+

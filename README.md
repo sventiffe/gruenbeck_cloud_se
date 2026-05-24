@@ -82,3 +82,17 @@ This project includes a fully mocked local simulator script to validate code and
 # Execute simulator using your virtual environment
 ./gruenbeck-venv/bin/python simulate.py
 ```
+
+---
+
+## Troubleshooting & Device Telemetry
+
+> [!TIP]
+> **Active Device Error & Frozen Telemetry**
+> If your physical Grünbeck water softener has an active, unacknowledged error shown on its display:
+> 1. The device will **stop sending new telemetry data** to the Grünbeck Cloud.
+> 2. The official Grünbeck mobile app will show frozen/outdated data.
+> 3. This Home Assistant integration's **Device Error** binary sensor will switch to `Problem`, and all other sensor values will stop updating (appearing frozen).
+> 
+> **How to resolve**: Simply walk over to your physical water softener and acknowledge/clear the active error on its display screen. Telemetry transmission to the cloud will immediately resume, the **Device Error** binary sensor will return to `OK`, and the integration will instantly resume receiving live data.
+
