@@ -34,3 +34,14 @@ Grünbeck's overall openness to open APIs or local integrations for their newer 
 * Older series (like `softliQ:SC`) had a direct, unencrypted local web server/Mux interface that allowed local LAN polling.
 * Newer series (`SD` and `SE` models) have removed these local access endpoints and are hardwired to route all traffic exclusively through their proprietary Azure-hosted cloud API.
 * As discussed in the community threads (and issue #117), Grünbeck does not provide public API documentation or support third-party smart home integrations, meaning the community must rely on reverse-engineered cloud sequences to pull their own device telemetry into systems like Home Assistant.
+
+---
+
+### 5. How can I detect if the telemetry data has become stale or frozen?
+Because the Grünbeck Cloud API will still respond with `200 OK` and a valid JSON payload containing your last cached state even if your physical device has been offline or frozen for days, there is no direct "offline" status field in the JSON payload itself. 
+
+However, you can easily detect a frozen state using these indicators:
+1. **Check the "Device Error" Sensor**: If the physical device has an unacknowledged error, it stops uploading telemetry entirely. If `binary_sensor.device_error` is in a `Problem` state, your other sensor metrics are likely frozen.
+2. **Verify flow vs. capacity changes**: If water is running (e.g., your flow rate is above zero) but your remaining capacities do not decrease at all over several minutes, the connection between the device and the cloud has frozen.
+3. **Lovelace / Template Alert**: You can build a Home Assistant template helper to alert you if the `last_changed` timestamp of your total `sensor.calculated_water_consumption` has not updated for a prolonged period (e.g., 6 hours), which indicates an inactive cloud feed.
+

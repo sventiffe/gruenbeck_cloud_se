@@ -116,3 +116,15 @@ Real-world testing has confirmed a critical behavior regarding device error hand
    - The `hasError` payload field will remain `true`, exposing a `Problem` state in Home Assistant's `Device Error` binary sensor.
 3. **Recovery Flow**: Once the error is physically acknowledged/cleared on the device's display screen, the softener immediately resumes telemetry transmissions. The `Device Error` sensor in Home Assistant returns to `OK` (or `false`), and live sensor updates resume instantly.
 
+---
+
+## Intentionally Excluded Parameters
+
+The following parameters returned by the `/update` JSON payload are intentionally **not** exposed as sensors in Home Assistant to maintain a clean entity registry and avoid redundant or low-resolution metrics:
+
+*   **`mcountwater1` & `mcountwatertank`**: These represent lifetime water meters in cubic meters (`m³`). However, because they only update in integer increments of $1\text{ m³}$ ($1,000\text{ Liters}$), they lack the granularity needed for modern smart home tracking. The integration's custom calculated total water consumption sensor offers far superior liter-level high-resolution tracking.
+*   **`mlime`**: Represents the raw input water hardness (e.g. `14` °dH). Because this is a static configuration value set on the device that does not change over time, it is not useful as a time-series sensor.
+*   **`mtemp`**: Represents a temperature probe value (e.g. `-9.0`). In the SE/SD series, this sensor is unused or returns static error values, providing no functional utility.
+*   **`mflowreg2` / `mregpercent2` / `mstep2`**: Technical details about Exchanger 2 regeneration steps. These are highly specific operational details that do not add value to day-to-day smart home monitoring.
+
+
