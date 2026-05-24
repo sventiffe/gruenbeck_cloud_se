@@ -1,0 +1,11 @@
+{
+  "domain": "gruenbeck_cloud_se",
+  "name": "Grünbeck Cloud SE Series",
+  "codeowners": ["@sventiffe"],
+  "config_flow": true,
+  "documentation": "https://github.com/sventiffe/gruenbeck_cloud_se",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/sventiffe/gruenbeck_cloud_se/issues",
+  "requirements": ["pygruenbeck_cloud==1.3.3"],
+  "version": "1.0.0"
+}
