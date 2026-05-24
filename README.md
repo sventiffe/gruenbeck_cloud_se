@@ -45,7 +45,7 @@ Unlike general-purpose cloud integrations that poll infrequently, this integrati
 
 1.  Open **Home Assistant**, go to **HACS** -> **Integrations**.
 2.  Click the three dots in the top-right corner and select **Custom repositories**.
-3.  Enter the URL of your GitHub repository: `https://github.com/yourusername/gruenbeck_cloud_se` and select **Integration** as the category.
+3.  Enter the URL of your GitHub repository: `https://github.com/sventiffe/gruenbeck_cloud_se` and select **Integration** as the category.
 4.  Click **Add**.
 5.  Click on the newly added integration and click **Download**.
 6.  Restart Home Assistant.

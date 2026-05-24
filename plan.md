@@ -33,7 +33,7 @@ This integration provides a fresh, dedicated solution for Grünbeck SE Series wa
 - [x] Validate recovery of accumulated values across simulated entity restarts.
 
 ## Phase 5: Verification & Distribution Prep
-- [ ] Validate component structure against Home Assistant core requirements.
-- [ ] Test loading in a mock environment or verify config flow using a test script.
-- [ ] Prepare standard HACS info file (`hacs.json`).
-- [ ] Prepare the integration for github publication.
+- [x] Validate component structure against Home Assistant core requirements.
+- [x] Test loading in a mock environment or verify config flow using a test script.
+- [x] Prepare standard HACS info file (`hacs.json`).
+- [x] Prepare the integration for github publication.
