@@ -20,13 +20,13 @@ SENSOR_TYPES = {
         "name": "Exchanger 1 Remaining Capacity",
         "unit": "L",
         "device_class": SensorDeviceClass.VOLUME,
-        "state_class": SensorStateClass.MEASUREMENT,
+        "state_class": None,
     },
     "mRescapa2": {
         "name": "Exchanger 2 Remaining Capacity",
         "unit": "L",
         "device_class": SensorDeviceClass.VOLUME,
-        "state_class": SensorStateClass.MEASUREMENT,
+        "state_class": None,
     },
     "mresidcap1": {
         "name": "Exchanger 1 Remaining Capacity Percent",
@@ -44,7 +44,7 @@ SENSOR_TYPES = {
         "name": "Regeneration Capacity",
         "unit": "m³",
         "device_class": SensorDeviceClass.VOLUME,
-        "state_class": SensorStateClass.MEASUREMENT,
+        "state_class": None,
     },
     "mcountreg": {
         "name": "Regeneration Count",
