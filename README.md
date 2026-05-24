@@ -74,6 +74,42 @@ Unlike general-purpose cloud integrations that poll infrequently, this integrati
 
 ---
 
+## Calculated Water Consumption & Dashboards
+
+The **Calculated Water Consumption** sensor is a continuous, lifetime accumulator (acting like a physical utility/smart water meter). It starts at `0.0 L` on installation and increases indefinitely, safely persisting across Home Assistant restarts.
+
+Since it is configured with `device_class: water` and `state_class: total_increasing`, it integrates natively with Home Assistant. Below are two popular methods to set up dashboards for tracking your daily, weekly, or monthly water usage.
+
+### Method A: Home Assistant Native "Energy & Water" Dashboard (Recommended)
+
+Home Assistant has a built-in dashboard dedicated to utility metrics. It automatically handles all hourly, daily, weekly, and monthly calculations and builds beautiful bar charts:
+
+1. Go to **Settings** -> **Dashboards** -> **Energy** (German: *Einstellungen* -> *Dashboards* -> *Energie*).
+2. Scroll down to the **Water Consumption** (*Wasserverbrauch*) section.
+3. Click **Add Water Source** (*Wasserquelle hinzufügen*).
+4. Select **Calculated Water Consumption** from the dropdown.
+5. Click **Save**.
+
+*Within 1-2 hours, Home Assistant will begin displaying beautiful, native bar graphs tracking your usage over time.*
+
+### Method B: Lovelace Dashboard Cards (Daily/Weekly Resets)
+
+If you want to display exact numeric values on your main Lovelace dashboard that reset on a fixed cycle (e.g. at midnight or at the end of the week):
+
+1. Go to **Settings** -> **Devices & Services** -> **Helpers** (*Einstellungen* -> *Geräte & Dienste* -> *Helfer*).
+2. Click **Create Helper** (*Helfer erstellen*) in the bottom-right corner.
+3. Select **Utility Meter** (*Verbrauchszähler*).
+4. Configure a **Daily** counter:
+   * **Name**: `Daily Water Consumption`
+   * **Input Sensor**: `Calculated Water Consumption` (`sensor.calculated_water_consumption`)
+   * **Meter reset cycle**: `Daily`
+5. Click **Create**.
+6. Repeat the same steps to create a **Weekly** helper (selecting `Weekly` as the reset cycle).
+
+This creates two new sensors (`sensor.daily_water_consumption` and `sensor.weekly_water_consumption`) which you can add to standard Lovelace cards (like Gauge, History Graph, or Stat cards) on your main dashboard!
+
+---
+
 ## Local Verification & Testing
 
 This project includes a fully mocked local simulator script to validate code and fetch real-time metrics completely independent of a live Home Assistant environment:

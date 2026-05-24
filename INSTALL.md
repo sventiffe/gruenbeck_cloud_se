@@ -51,3 +51,25 @@ This guide explains how to install and configure the **Grünbeck Cloud SE Series
    * **Password**: Your Grünbeck Cloud login password
 5. The integration will automatically contact the cloud API, discover your water softeners, and display them.
 6. Select your discovered device (e.g. *YOUR_DEVICE_NAME*) from the dropdown and complete the setup!
+
+---
+
+## Post-Setup: Tracking Water Consumption
+
+Once the integration is configured, it will expose the **Calculated Water Consumption** sensor. Because it behaves like a standard utility meter and has `total_increasing` metrics, you can configure beautiful water usage dashboards.
+
+### Method A: Built-in Energy/Water Dashboard (Recommended)
+1. Go to **Settings** -> **Dashboards** -> **Energy** (German: *Einstellungen* -> *Dashboards* -> *Energie*).
+2. Scroll to the **Water Consumption** (*Wasserverbrauch*) section.
+3. Click **Add Water Source** (*Wasserquelle hinzufügen*).
+4. Select **Calculated Water Consumption** from the list and save.
+*Home Assistant will start compiling and presenting gorgeous hourly/daily bar graphs of your water usage.*
+
+### Method B: Lovelace Resets (Daily/Weekly Resets)
+If you want exact numeric values on your main dashboard that reset at midnight or the weekend:
+1. Go to **Settings** -> **Devices & Services** -> **Helpers** (*Einstellungen* -> *Geräte & Dienste* -> *Helfer*).
+2. Click **Create Helper** -> Select **Utility Meter** (*Verbrauchszähler*).
+3. Name it `Daily Water Consumption`, choose `Calculated Water Consumption` as input, and set the cycle to `Daily`. Click **Create**.
+4. Repeat to create a `Weekly Water Consumption` sensor with a `Weekly` cycle.
+*You can now display these new daily/weekly resetting sensors on any dashboard card (Gauge, Stat, or History Graph)!*
+
