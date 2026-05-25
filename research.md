@@ -127,4 +127,29 @@ The following parameters returned by the `/update` JSON payload are intentionall
 *   **`mtemp`**: Represents a temperature probe value (e.g. `-9.0`). In the SE/SD series, this sensor is unused or returns static error values, providing no functional utility.
 *   **`mflowreg2` / `mregpercent2` / `mstep2`**: Technical details about Exchanger 2 regeneration steps. These are highly specific operational details that do not add value to day-to-day smart home monitoring.
 
+---
+
+## Network Traffic & Rate-Limiting Investigation
+
+### 1. Cloud Connection Type & Protocol
+Direct packet analysis on the local network (via a switch port mirror of the softener's wireless access point interface to the Home Assistant packet capturing interface) confirmed:
+* **Protocol**: Secure MQTT (MQTTS) over TCP Port `8883`.
+* **Server**: Azure IoT Hub backend.
+* **Traffic Flow**: When idle, the device actively maintains a healthy TLS connection by sending encrypted MQTT Keep-Alive pings (PINGREQ / PINGRESP) wrapped in small 31-byte TLS records.
+
+### 2. High-Frequency Polling Telemetry Freeze (Rate Limiting)
+Our investigations revealed a critical vulnerability to cloud rate-limiting when using aggressive sub-minute polling intervals (e.g. 15 seconds):
+* **C2D Command Throttling**: The 5-step realtime cloud protocol triggers multiple Cloud-to-Device (C2D) commands via the Azure API backend to instruct the device to enter real-time mode. At a 15-second polling interval, this generates over 900 C2D commands and 1,200 HTTP requests per hour.
+* **The "Stale Data" Freeze**: When the daily or burst rate-limiting thresholds of the Azure IoT Hub or API Gateway are exceeded:
+  1. The REST API still responds with `200 OK` (returning the last cached state).
+  2. The cloud silently throttles/drops the C2D commands.
+  3. The physical device never receives the instruction to wake up, so it stops uploading fresh telemetry.
+  4. Both the official vendor app and the Home Assistant integration remain permanently frozen on old stale data, even after device restarts or app reinstalls.
+* **Recovery**: The rate-limiting block clears automatically after a cooling-off period of zero activity (typically a 12-to-24 hour rolling window).
+
+### 3. Sustainable Polling Recommendations
+* **Interval**: A safe polling interval of **10 to 60 minutes** (defaulting to **10 minutes**) is recommended to keep API requests well below the cloud's threshold.
+* **UI Entity Disabling**: Because flow rates and regeneration status change dynamically on a second-by-second basis, they are not meaningful at an hourly or 10-minute polling frequency. These sensors are disabled by default in the Home Assistant registry, leaving only slow-moving metrics (capacities, salt usage, error states) active.
+
+
 
