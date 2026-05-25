@@ -3,45 +3,50 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![Community Forum](https://img.shields.io/badge/community-forum-brightgreen.svg)](https://community.home-assistant.io/)
 
-A custom, high-frequency real-time Home Assistant integration specifically designed for **Grünbeck SE Series** (`softliQ.SE`, `softliQ.SD`) cloud-connected water softeners. 
+A custom, low-frequency monitoring integration specifically designed for **Grünbeck SE Series** (`softliQ.SE`, `softliQ.SD`) cloud-connected water softeners.
 
-Unlike general-purpose cloud integrations that poll infrequently, this integration implements a dedicated **5-step real-time connection sequence** that forces a cloud refresh and polls live device metrics every **15 seconds** (fully configurable in the UI), capturing precise flow rates and water status. For more details on the project, limitations, and Grünbeck's API stance, see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md).
+> [!WARNING]
+> **Is a Grünbeck Softener right for your Smart Home?**
+> If you are currently shopping for a water softener and plan to integrate it deeply into your smart home (e.g. Home Assistant), **Grünbeck might not be your best choice.**
+> * **No Local API**: Newer models (`softliQ.SD` and `softliQ.SE` series) do not offer a local API. All data must route through Grünbeck's proprietary, closed Azure-hosted cloud servers.
+> * **Strict Rate Limits**: High-frequency sub-minute polling (like 15 seconds) will trigger severe cloud-side rate limiting (C2D MQTT command throttling), completely freezing your telemetry and making both this integration and your official mobile app show stale data.
+> * **Our Approach**: This integration is designed specifically for **low-frequency monitoring** of slow-moving basic parameters (capacities, salt levels, error states, and long-term water consumption statistics) at a safe **10 to 60-minute interval** (defaulting to 10 minutes) to keep your cloud connection perfectly stable.
+>
+> If you own a different Grünbeck model (such as the `softliQ.SC` series, which supports local offline LAN polling) or prefer general-purpose cloud polling, you should consider using **[hagruenbeck_cloud](https://github.com/p0l0/hagruenbeck_cloud)** instead.
 
 > [!IMPORTANT]
-> **Prerequisites & Incompatibility Warnings**
-> 1. **Uninstall Legacy Integrations First**: Home Assistant restricts loading multiple versions of the same dependency library (`pygruenbeck_cloud`). If you currently have the general-purpose `hagruenbeck_cloud` integration installed, you **must completely uninstall it and restart Home Assistant** before installing this integration to avoid library dependency conflicts (`Unable to login`).
-> 2. **Email Domain Login Sensitivity**: The Grünbeck Cloud API login is strictly domain-sensitive. You must enter your exact registered email address (e.g. `@googlemail.com` vs `@gmail.com` as appropriate).
+> **Prerequisites & Library Conflicts**
+> Home Assistant restricts loading multiple versions of the same dependency library (`pygruenbeck_cloud`). If you currently have the general-purpose `hagruenbeck_cloud` integration installed, you **must completely uninstall it and restart Home Assistant** before installing this integration to avoid library dependency conflicts (`Unable to login`).
 
 ---
 
-
 ## Key Features
 
-*   **Real-time Polling (Configurable, Default 15s)**: Polls exchanger capacities, percentages, flow rates, salt levels, and error states dynamically.
-*   **Duplex Calculated Water Consumption**: Water consumption is not directly reported by the Grünbeck API. This integration solves that by monitoring capacity decreases across **both** Exchangers (duplex system) and accumulating precise water consumption in Liters (`L`), persisting it safely across Home Assistant restarts.
+*   **Low-Frequency Monitoring (Configurable 10–60m, Default 10m)**: Polls exchanger capacities, percentages, salt levels, and error states dynamically at a cloud-safe interval.
+*   **Duplex Calculated Water Consumption**: Water consumption is not directly reported by the cloud API. This integration solves that by monitoring capacity decreases across **both** Exchangers (duplex system) and accumulating precise water consumption in Liters (`L`), persisting it safely across Home Assistant restarts.
+*   **Registry-Disabled Fast Sensors**: High-frequency sensors (like flow rates and regeneration status) are disabled by default in the Home Assistant registry to prevent stale, static values on a 10-minute polling cycle from cluttering your dashboard. They can be manually re-enabled in the entity settings if needed.
 *   **User-Friendly Config Flow**: Set up the integration directly via the Home Assistant integrations frontend (simply input your username and password, then select your water softener from the discovered list).
-*   **HACS Ready**: Formatted according to the standard HACS custom repository layout.
 
 ---
 
 ## Entities Provided
 
-| Platform | Entity Name | Description |
-|---|---|---|
-| `sensor` | Exchanger 1 Remaining Capacity | Remaining soft water capacity for Exchanger 1 in Liters (`L`) |
-| `sensor` | Exchanger 2 Remaining Capacity | Remaining soft water capacity for Exchanger 2 in Liters (`L`) |
-| `sensor` | Exchanger 1 Remaining Capacity Percent | Percentage remaining for Exchanger 1 Exchanger (`%`) |
-| `sensor` | Exchanger 2 Remaining Capacity Percent | Percentage remaining for Exchanger 2 Exchanger (`%`) |
-| `sensor` | Exchanger 1 Flow Rate | Live soft water flow rate through Exchanger 1 (`m³/h`) |
-| `sensor` | Exchanger 2 Flow Rate | Live soft water flow rate through Exchanger 2 (`m³/h`) |
-| `sensor` | Blended Flow Rate | Combined soft water flow rate (`m³/h`) |
-| `sensor` | Calculated Water Consumption | High-precision total accumulated water consumption (`L`), ideal for utility meters |
-| `sensor` | Salt Usage | Accumulated salt usage in kilograms (`kg`) |
-| `sensor` | Regeneration Capacity | Nominal soft water capacity (`m³`) |
-| `sensor` | Regeneration Count | Number of regenerations performed |
-| `sensor` | Regeneration Status | Current operational phase of regeneration |
-| `binary_sensor` | Device Error | Active problem state if the softener reports any internal errors |
-| `binary_sensor` | Salt Warning | Active problem state if salt levels are low or need attention |
+| Platform | Entity Name | Description | Default Registry State |
+|---|---|---|---|
+| `sensor` | Exchanger 1 Remaining Capacity | Remaining soft water capacity for Exchanger 1 in Liters (`L`) | **Enabled** |
+| `sensor` | Exchanger 2 Remaining Capacity | Remaining soft water capacity for Exchanger 2 in Liters (`L`) | **Enabled** |
+| `sensor` | Exchanger 1 Remaining Capacity Percent | Percentage remaining for Exchanger 1 Exchanger (`%`) | **Enabled** |
+| `sensor` | Exchanger 2 Remaining Capacity Percent | Percentage remaining for Exchanger 2 Exchanger (`%`) | **Enabled** |
+| `sensor` | Exchanger 1 Flow Rate | Live soft water flow rate through Exchanger 1 (`m³/h`) | *Disabled by default* |
+| `sensor` | Exchanger 2 Flow Rate | Live soft water flow rate through Exchanger 2 (`m³/h`) | *Disabled by default* |
+| `sensor` | Blended Flow Rate | Combined soft water flow rate (`m³/h`) | *Disabled by default* |
+| `sensor` | Calculated Water Consumption | High-precision total accumulated water consumption (`L`), ideal for utility meters | **Enabled** |
+| `sensor` | Salt Usage | Accumulated salt usage in kilograms (`kg`) | **Enabled** |
+| `sensor` | Regeneration Capacity | Nominal soft water capacity (`m³`) | **Enabled** |
+| `sensor` | Regeneration Count | Number of regenerations performed | **Enabled** |
+| `sensor` | Regeneration Status | Current operational phase of regeneration | *Disabled by default* |
+| `binary_sensor` | Device Error | Active problem state if the softener reports any internal errors | **Enabled** |
+| `binary_sensor` | Salt Warning | Active problem state if salt levels are low or need attention | **Enabled** |
 
 ---
 

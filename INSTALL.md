@@ -51,6 +51,7 @@ This guide explains how to install and configure the **Grünbeck Cloud SE Series
    * **Password**: Your Grünbeck Cloud login password
 5. The integration will automatically contact the cloud API, discover your water softeners, and display them.
 6. Select your discovered device (e.g. *YOUR_DEVICE_NAME*) from the dropdown and complete the setup!
+*By default, the integration will poll every **10 minutes** to maintain API connection stability. You can adjust this interval between 10 and 60 minutes at any time by clicking the **Configure** button on the integration's card under Settings -> Devices & Services.*
 
 ---
 

@@ -7,15 +7,19 @@ Here are the answers to the most common questions regarding the **Grünbeck Clou
 ### 1. What was the motivation for creating this integration?
 This integration was specifically created due to the incompatibility of the general-purpose [hagruenbeck_cloud](https://github.com/p0l0/hagruenbeck_cloud) integration with the **SE / SD series** devices (such as `softliQ.SE` and `softliQ.SD`). 
 
-The standard integration struggled with SE devices due to outdated API schemas and infrequent polling loops. The issue is tracked in detail on GitHub under [hagruenbeck_cloud Issue #117](https://github.com/p0l0/hagruenbeck_cloud/issues/117). This custom component was built to provide a high-frequency, real-time 5-step cloud refresh sequence designed explicitly for the SE series.
+The standard integration struggled with SE devices due to outdated API schemas. This custom component was built to provide a specific, robust solution for the SE/SD series that focuses on **stable, low-frequency monitoring of basic parameters** (such as capacities, salt range, error states, and long-term water consumption statistics) at a safe 10-to-60 minute interval. 
+
+> [!IMPORTANT]
+> If you own a different model (such as the `softliQ.SC` series, which supports direct offline local LAN polling) or prefer general-purpose cloud polling, you should continue using **[hagruenbeck_cloud](https://github.com/p0l0/hagruenbeck_cloud)** instead.
 
 ---
 
 ### 2. Why do my sensor updates sometimes freeze?
 Anecdotally, users have noticed that telemetry updates can occasionally freeze, leaving sensor states unchanged (or showing as "unknown") both in Home Assistant and in the official Grünbeck mobile app.
 
-* **What triggers this?** It is currently unclear what exactly triggers these freezes, but they are often tied to the physical device. Specifically, if your water softener displays a physical error or warning on its physical display screen, it **stops uploading telemetry to the Grünbeck Cloud**.
-* **How to fix it?** Simply walk over to your physical water softener and acknowledge/clear the error on the physical display. Once the error is cleared, the device will immediately resume sending telemetry, and Home Assistant will resume real-time updates automatically.
+There are two primary causes for these freezes:
+* **Physical Device Errors**: If your water softener displays a physical error or warning on its physical display screen (e.g., salt low or maintenance required), it **stops uploading telemetry to the Grünbeck Cloud**. Acknowledge/clear the warning on the physical touch panel to immediately resume updates.
+* **Cloud Rate Limiting (Excessive Polling)**: If the integration is configured to poll at an aggressive, high-frequency rate (like sub-minute intervals), Grünbeck's cloud gateway (Azure IoT Hub) will throttle the wake-up commands. The cloud API will continue responding with `200 OK` using old cached data, but the physical device will cease telemetry uploads, freezing your data for both this integration and the official app. Ensure your polling interval is set to at least **10 minutes** to avoid this.
 
 ---
 
@@ -33,7 +37,7 @@ We have made the polling interval fully configurable between **10 minutes** and 
 Grünbeck's overall openness to open APIs or local integrations for their newer cloud-connected devices (like the `softliQ:SD` and `softliQ:SE` series) is highly limited:
 * Older series (like `softliQ:SC`) had a direct, unencrypted local web server/Mux interface that allowed local LAN polling.
 * Newer series (`SD` and `SE` models) have removed these local access endpoints and are hardwired to route all traffic exclusively through their proprietary Azure-hosted cloud API.
-* As discussed in the community threads (and issue #117), Grünbeck does not provide public API documentation or support third-party smart home integrations, meaning the community must rely on reverse-engineered cloud sequences to pull their own device telemetry into systems like Home Assistant.
+* As discussed in the community threads (and [issue #117](https://github.com/p0l0/hagruenbeck_cloud/issues/117)), Grünbeck does not provide public API documentation or support third-party smart home integrations, meaning the community must rely on reverse-engineered cloud sequences to pull their own device telemetry into systems like Home Assistant.
 
 ---
 
