@@ -132,7 +132,7 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         """Initialize options flow."""
-        self.config_entry = config_entry
+        self._entry = config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
@@ -141,16 +141,16 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            new_password = user_input.get(CONF_PASSWORD, self.config_entry.data.get(CONF_PASSWORD))
-            new_scan_interval = user_input.get(CONF_SCAN_INTERVAL, self.config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
+            new_password = user_input.get(CONF_PASSWORD, self._entry.data.get(CONF_PASSWORD))
+            new_scan_interval = user_input.get(CONF_SCAN_INTERVAL, self._entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
 
             # Validate polling interval (minutes, range 10-60)
             if not (10 <= new_scan_interval <= 60):
                 errors["base"] = "invalid_scan_interval"
             else:
                 # Validate new credentials by trying to login if password changed
-                if new_password != self.config_entry.data.get(CONF_PASSWORD):
-                    gb = PyGruenbeckCloud(self.config_entry.data.get(CONF_USERNAME), new_password)
+                if new_password != self._entry.data.get(CONF_PASSWORD):
+                    gb = PyGruenbeckCloud(self._entry.data.get(CONF_USERNAME), new_password)
                     try:
                         success = await gb.login()
                         if not success:
@@ -163,10 +163,10 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
 
                 if not errors:
                     # Update config entry data for password
-                    new_data = dict(self.config_entry.data)
+                    new_data = dict(self._entry.data)
                     new_data[CONF_PASSWORD] = new_password
                     self.hass.config_entries.async_update_entry(
-                        self.config_entry, data=new_data
+                        self._entry, data=new_data
                     )
 
                     # Save scan interval in options
@@ -178,8 +178,8 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
                     )
 
         # Current values
-        current_password = self.config_entry.data.get(CONF_PASSWORD)
-        current_scan_interval = self.config_entry.options.get(
+        current_password = self._entry.data.get(CONF_PASSWORD)
+        current_scan_interval = self._entry.options.get(
             CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL
         )
 
