@@ -169,10 +169,11 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         """Call when entity is added to Home Assistant."""
         await super().async_added_to_hass()
         if (state := await self.async_get_last_state()) is not None:
-            try:
-                self._state = float(state.state)
-            except (ValueError, TypeError):
-                self._state = 0.0
+            if state.state not in ("unknown", "unavailable"):
+                try:
+                    self._state = float(state.state)
+                except (ValueError, TypeError):
+                    pass
 
     @property
     def native_value(self) -> float:
