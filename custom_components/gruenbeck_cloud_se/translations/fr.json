@@ -33,14 +33,14 @@
         "description": "Configurez les paramètres dynamiques de votre adoucisseur d'eau. Vous pouvez mettre à jour votre mot de passe cloud ou ajuster l'intervalle de mise à jour.",
         "data": {
           "password": "Mot de passe Cloud",
-          "scan_interval": "Intervalle de mise à jour (secondes, min 10s)"
+          "scan_interval": "Intervalle de mise à jour (minutes, plage 10-60)"
         }
       }
     },
     "error": {
       "invalid_auth": "Nom d'utilisateur ou mot de passe invalide. Veuillez vérifier vos nouveaux identifiants.",
       "cannot_connect": "Échec de connexion à l'API Grünbeck Cloud. Veuillez vérifier votre connexion Internet.",
-      "invalid_scan_interval": "L'intervalle de mise à jour doit être d'au moins 10 secondes pour préserver la stabilité de l'API."
+      "invalid_scan_interval": "L'intervalle de mise à jour doit être compris entre 10 et 60 minutes pour préserver la stabilité de l'API."
     }
   }
 }

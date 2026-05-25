@@ -33,14 +33,14 @@
         "description": "Configure dynamic settings for your water softener integration. You can update your cloud password or adjust the high-frequency polling interval.",
         "data": {
           "password": "Cloud Password",
-          "scan_interval": "Polling Interval (seconds, min 10s)"
+          "scan_interval": "Polling Interval (minutes, range 10-60)"
         }
       }
     },
     "error": {
       "invalid_auth": "Invalid username or password. Please verify your new credentials.",
       "cannot_connect": "Failed to connect to the Grünbeck Cloud API. Please check your internet connection.",
-      "invalid_scan_interval": "The polling interval must be at least 10 seconds to keep the cloud API stable."
+      "invalid_scan_interval": "The polling interval must be between 10 and 60 minutes to keep the cloud API stable."
     }
   }
 }

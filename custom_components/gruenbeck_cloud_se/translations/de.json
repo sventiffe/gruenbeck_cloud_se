@@ -33,14 +33,14 @@
         "description": "Konfigurieren Sie dynamische Einstellungen für Ihre Wasserenthärtungsanlage. Sie können Ihr Cloud-Passwort aktualisieren oder das Abfrageintervall anpassen.",
         "data": {
           "password": "Cloud-Passwort",
-          "scan_interval": "Abfrageintervall (Sekunden, mind. 10s)"
+          "scan_interval": "Abfrageintervall (Minuten, Bereich 10-60)"
         }
       }
     },
     "error": {
       "invalid_auth": "Ungültiger Benutzername oder Passwort. Bitte überprüfen Sie Ihre neuen Zugangsdaten.",
       "cannot_connect": "Verbindung mit der Grünbeck Cloud API fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung.",
-      "invalid_scan_interval": "Das Abfrageintervall muss mindestens 10 Sekunden betragen, um die API-Stabilität zu gewährleisten."
+      "invalid_scan_interval": "Das Abfrageintervall muss zwischen 10 und 60 Minuten betragen, um die API-Stabilität zu gewährleisten."
     }
   }
 }

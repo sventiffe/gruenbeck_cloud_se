@@ -63,24 +63,28 @@ SENSOR_TYPES = {
         "unit": "m³/h",
         "device_class": SensorDeviceClass.VOLUME_FLOW_RATE,
         "state_class": SensorStateClass.MEASUREMENT,
+        "enabled_default": False,
     },
     "mflow2": {
         "name": "Exchanger 2 Flow Rate",
         "unit": "m³/h",
         "device_class": SensorDeviceClass.VOLUME_FLOW_RATE,
         "state_class": SensorStateClass.MEASUREMENT,
+        "enabled_default": False,
     },
     "mflowblend": {
         "name": "Blended Flow Rate",
         "unit": "m³/h",
         "device_class": SensorDeviceClass.VOLUME_FLOW_RATE,
         "state_class": SensorStateClass.MEASUREMENT,
+        "enabled_default": False,
     },
     "mregstatus": {
         "name": "Regeneration Status",
         "unit": None,
         "device_class": None,
         "state_class": SensorStateClass.MEASUREMENT,
+        "enabled_default": False,
     },
 }
 
@@ -107,6 +111,7 @@ async def async_setup_entry(
                 info["unit"],
                 info["device_class"],
                 info["state_class"],
+                info.get("enabled_default", True),
             )
         )
 
@@ -127,6 +132,7 @@ class GruenbeckCloudSensor(GruenbeckEntity, SensorEntity):
         unit: str | None,
         device_class: SensorDeviceClass | None,
         state_class: SensorStateClass | None,
+        enabled_default: bool = True,
     ) -> None:
         """Initialize the sensor."""
         super().__init__(coordinator, entity_key)
@@ -134,6 +140,7 @@ class GruenbeckCloudSensor(GruenbeckEntity, SensorEntity):
         self._attr_native_unit_of_measurement = unit
         self._attr_device_class = device_class
         self._attr_state_class = state_class
+        self._attr_entity_registry_enabled_default = enabled_default
 
     @property
     def native_value(self) -> float | int | str | None:

@@ -20,10 +20,10 @@ Anecdotally, users have noticed that telemetry updates can occasionally freeze, 
 ---
 
 ### 3. What is the motivation behind the configurable polling interval and rate limiting?
-We have made the polling interval fully configurable down to a minimum of **10 seconds** (with a default of **15 seconds**). However, we strongly suggest keeping the interval moderate.
+We have made the polling interval fully configurable between **10 minutes** and **60 minutes** (with a default of **10 minutes**).
 
-* **Why?** Since the SE series lacks a local API, all updates must be requested from Grünbeck’s cloud servers. High-frequency polling (like 10–15s) increases the load on Grünbeck’s end. 
-* To ensure the stability of the integration and to keep the load on Grünbeck's cloud moderate—preventing them from implementing harsh rate limits or IP blocking—consider setting the polling interval to a slightly higher value (e.g. 30–60 seconds) if real-time sub-minute flow rates are not actively required for your automation needs.
+* **Why?** Since the SE series lacks a local API, all updates must be requested from Grünbeck’s cloud servers. Aggressive sub-minute polling (like 10–15 seconds) triggers severe cloud-side rate-limiting at the Azure API Gateway and IoT Hub levels. When throttled, the cloud silently stops dispatching wake-up commands to the physical device. As a result, your device ceases telemetry uploads, and both the official app and Home Assistant will display frozen data from hours ago.
+* **Why are flow rates and regeneration status disabled by default?** Because these metrics change on a second-by-second basis and are not meaningful when checked at a 10-to-60 minute interval. You can still manually enable them in Home Assistant if needed, but a dedicated local smart flow sensor is far superior for real-time water monitoring.
 
 ---
 

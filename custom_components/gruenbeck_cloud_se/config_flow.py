@@ -144,8 +144,8 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
             new_password = user_input.get(CONF_PASSWORD, self.config_entry.data.get(CONF_PASSWORD))
             new_scan_interval = user_input.get(CONF_SCAN_INTERVAL, self.config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
 
-            # Validate polling interval
-            if new_scan_interval < 10:
+            # Validate polling interval (minutes, range 10-60)
+            if not (10 <= new_scan_interval <= 60):
                 errors["base"] = "invalid_scan_interval"
             else:
                 # Validate new credentials by trying to login if password changed
@@ -192,7 +192,7 @@ class GruenbeckOptionsFlowHandler(config_entries.OptionsFlow):
                     ): str,
                     vol.Required(
                         CONF_SCAN_INTERVAL, default=current_scan_interval
-                    ): int,
+                    ): vol.All(vol.Coerce(int), vol.Range(min=10, max=60)),
                 }
             ),
             errors=errors,
