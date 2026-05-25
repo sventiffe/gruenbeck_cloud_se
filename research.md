@@ -12,7 +12,7 @@ Grünbeck devices do not push updates continuously, and the standard API doesn't
 4. **POST** `https://prod-eu-gruenbeck-api.azurewebsites.net/api/devices/{DEVICE_ID}/realtime/leave?api-version=2024-05-02`
 5. **POST** `https://prod-eu-gruenbeck-api.azurewebsites.net/api/devices/{DEVICE_ID}/realtime/off?api-version=2024-05-02`
 
-By executing this sequence on a 60-second polling interval (via a Home Assistant `DataUpdateCoordinator`), we can fetch fresh data on every update cycle. It is important to stick to this sequence and not to optimize it by removing any of the steps, otherwise you will not get fresh data from the device.
+By executing this sequence on a 60-second polling interval (via a Home Assistant `DataUpdateCoordinator`), we can fetch fresh data on every update cycle. It is important to stick to this sequence and not to optimize it by removing any of the steps, otherwise you will not get fresh data from the device. This script successfully ran >30 minutes without telemetry freezes. However, in practice it turned out that continuing regular polls will eventually make Gruenbeck sending back updated data to either Home Asisstant or the app. So this approach has been dropped for this integration. 
 
 ---
 
@@ -145,7 +145,7 @@ Our investigations revealed a critical vulnerability to cloud rate-limiting when
   2. The cloud silently throttles/drops the C2D commands.
   3. The physical device never receives the instruction to wake up, so it stops uploading fresh telemetry.
   4. Both the official vendor app and the Home Assistant integration remain permanently frozen on old stale data, even after device restarts or app reinstalls.
-* **Recovery**: The rate-limiting block clears automatically after a cooling-off period of zero activity (typically a 12-to-24 hour rolling window).
+* **Recovery**: The rate-limiting block clears automatically after a cooling-off period of zero activity (anecdotically 1-3 hours).
 
 ### 3. Sustainable Polling Recommendations
 * **Interval**: A safe polling interval of **10 to 60 minutes** (defaulting to **10 minutes**) is recommended to keep API requests well below the cloud's threshold.

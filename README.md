@@ -75,13 +75,13 @@ A custom, low-frequency monitoring integration specifically designed for **Grün
 2.  Click **Add Integration** in the bottom-right corner.
 3.  Search for **Grünbeck Cloud SE Series** and select it.
 4.  Enter your Grünbeck Cloud username and password.
-5.  Select your discovered water softener device (e.g. *YOUR_DEVICE_NAME*) from the dropdown and complete setup.
+5.  Select your discovered water softener device from the dropdown and complete setup.
 
 ### Dynamic Options (Password & Polling Interval)
 
 Once configured, you can click the **Configure** (German: *Konfigurieren*) button on the integration's card in **Settings -> Devices & Services** to dynamically manage your settings without having to delete the integration or lose your calculated water consumption total:
 * **Cloud Password**: Easily update your password if you rotate it. The integration will securely re-authenticate with the Grünbeck Cloud automatically.
-* **Polling Interval**: Adjust the cloud polling frequency in minutes. The default is **10 minutes** (highly recommended for stability), with a configurable range of **10 to 60 minutes** to remain completely safe from cloud-side rate-limiting and telemetry freezes (see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md) for rate-limiting guidelines).
+* **Polling Interval**: Adjust the cloud polling frequency in minutes. The default is **10 minutes**, with a configurable range of **10 to 60 minutes** to remain completely safe from cloud-side rate-limiting and telemetry freezes (see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md) for rate-limiting guidelines).
 
 ---
 
