@@ -183,7 +183,7 @@ async def main():
     # Use test credentials in workspace
     USERNAME = "YOUR_EMAIL"
     PASSWORD = "YOUR_PASSWORD"
-    DEVICE_ID = "softliQ.SE/YOUR_SERIAL_NUMBER"
+    DEVICE_ID = "softliQ.SE/YOUR_DEVICE_ID"
 
     print(f"Step 1: Simulating Config Flow (User Credentials Step)...")
     flow = GruenbeckFlowHandler()

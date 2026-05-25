@@ -18,12 +18,12 @@ By executing this sequence on a 60-second polling interval (via a Home Assistant
 
 ## Response Data Structure & Mapping
 
-The GET `/update` endpoint returns a JSON payload. Below is a sample response retrieved from a live `softliQ.SE` device (YOUR_DEVICE_NAME, `softliQ.SE/YOUR_SERIAL_NUMBER`):
+The GET `/update` endpoint returns a JSON payload. Below is a sample response retrieved from a live `softliQ.SE` device (YOUR_DEVICE_NAME, `softliQ.SE/YOUR_DEVICE_ID`):
 
 ```json
 {
   "hasError": true,
-  "id": "softliQ.SE/YOUR_SERIAL_NUMBER",
+  "id": "softliQ.SE/YOUR_DEVICE_ID",
   "iregtrig": "0",
   "isRegistered": false,
   "mRescapa2": 933.0,

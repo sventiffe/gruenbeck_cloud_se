@@ -11,7 +11,7 @@ from pygruenbeck_cloud import PyGruenbeckCloud
 
 USERNAME = "YOUR_EMAIL"
 PASSWORD = "YOUR_PASSWORD"
-DEVICE_ID = "softliQ.SE/YOUR_SERIAL_NUMBER"
+DEVICE_ID = "softliQ.SE/YOUR_DEVICE_ID"
 
 TRACKED_FIELDS = [
     'mrescapa1', 'mresidcap1', 'mflow1', 'mregstatus', 
