@@ -30,7 +30,7 @@
     "step": {
       "init": {
         "title": "Grünbeck Cloud SE Settings",
-        "description": "Configure dynamic settings for your water softener integration. You can update your cloud password or adjust the high-frequency polling interval.",
+        "description": "Configure dynamic settings for your water softener integration. You can update your cloud password or adjust the polling interval.",
         "data": {
           "password": "Cloud Password",
           "scan_interval": "Polling Interval (minutes, range 10-60)"

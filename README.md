@@ -24,7 +24,7 @@ A custom, low-frequency monitoring integration specifically designed for **Grün
 
 *   **Low-Frequency Monitoring (Configurable 10–60m, Default 10m)**: Polls exchanger capacities, percentages, salt levels, and error states dynamically at a cloud-safe interval.
 *   **Duplex Calculated Water Consumption**: Water consumption is not directly reported by the cloud API. This integration solves that by monitoring capacity decreases across **both** Exchangers (duplex system) and accumulating precise water consumption in Liters (`L`), persisting it safely across Home Assistant restarts.
-*   **Registry-Disabled Fast Sensors**: High-frequency sensors (like flow rates and regeneration status) are disabled by default in the Home Assistant registry to prevent stale, static values on a 10-minute polling cycle from cluttering your dashboard. They can be manually re-enabled in the entity settings if needed.
+*   **Registry-Disabled Fast Sensors**: Rapidly changing parameters (like flow rates and regeneration status) are disabled by default in the Home Assistant registry. Because they change on a second-by-second basis physically, catching them on a 10-minute cloud polling cycle will mostly result in stale or zero values, so they are kept disabled by default to avoid cluttering your dashboard. You can manually re-enable them in the entity settings if desired.
 *   **User-Friendly Config Flow**: Set up the integration directly via the Home Assistant integrations frontend (simply input your username and password, then select your water softener from the discovered list).
 
 ---
