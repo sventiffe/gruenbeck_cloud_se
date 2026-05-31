@@ -174,6 +174,7 @@ class GruenbeckCalculatedWaterConsumptionSensor(
                     self._state = float(state.state)
                 except (ValueError, TypeError):
                     pass
+        self.async_write_ha_state()
 
     @property
     def native_value(self) -> float:
