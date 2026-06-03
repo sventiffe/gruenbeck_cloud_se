@@ -195,10 +195,12 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         if current_cap1 is not None:
             try:
                 current_cap1 = float(current_cap1)
-                if self._last_cap1 is not None:
-                    if current_cap1 < self._last_cap1:
-                        self._state += self._last_cap1 - current_cap1
-                self._last_cap1 = current_cap1
+                # Ignore 0.0 values (active regeneration or offline status)
+                if current_cap1 > 0.0:
+                    if self._last_cap1 is not None:
+                        if current_cap1 < self._last_cap1:
+                            self._state += self._last_cap1 - current_cap1
+                    self._last_cap1 = current_cap1
             except (ValueError, TypeError):
                 pass
 
@@ -206,10 +208,12 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         if current_cap2 is not None:
             try:
                 current_cap2 = float(current_cap2)
-                if self._last_cap2 is not None:
-                    if current_cap2 < self._last_cap2:
-                        self._state += self._last_cap2 - current_cap2
-                self._last_cap2 = current_cap2
+                # Ignore 0.0 values (active regeneration or offline status)
+                if current_cap2 > 0.0:
+                    if self._last_cap2 is not None:
+                        if current_cap2 < self._last_cap2:
+                            self._state += self._last_cap2 - current_cap2
+                    self._last_cap2 = current_cap2
             except (ValueError, TypeError):
                 pass
 

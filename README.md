@@ -89,6 +89,8 @@ Once configured, you can click the **Configure** (German: *Konfigurieren*) butto
 
 The **Calculated Water Consumption** sensor is a continuous, lifetime accumulator (acting like a physical utility/smart water meter). It starts at `0.0 L` on installation and increases indefinitely, safely persisting across Home Assistant restarts.
 
+To prevent false water consumption spikes, the sensor automatically filters out any remaining capacity updates of exactly `0.0 L`. During active regeneration cycles, the device temporarily drops the offline exchanger's remaining capacity to `0.0 L` before resetting it to full capacity. By ignoring this transient `0.0 L` state, the integration ensures that capacity resets or purges are never falsely recorded as water usage.
+
 Since it is configured with `device_class: water` and `state_class: total_increasing`, it integrates natively with Home Assistant. Below are two popular methods to set up dashboards for tracking your daily, weekly, or monthly water usage.
 
 ### Method A: Home Assistant Native "Energy & Water" Dashboard (Recommended)

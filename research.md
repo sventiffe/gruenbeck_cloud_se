@@ -83,7 +83,8 @@ As noted in the user request:
 2. The remaining capacity fields (`mrescapa1`, `mRescapa2`) count down to `0` until a regeneration happens, at which point they reset to a higher capacity (e.g. 331L or more).
 3. We can track the total soft water consumed by:
    - Calculating the difference between successive polls: $\Delta = \text{previous\_value} - \text{current\_value}$.
-   - If $\Delta > 0$, add $\Delta$ to the accumulated total consumption sensor.
+   - If $\Delta > 0$ and the `current_value` is greater than `0.0`, add $\Delta$ to the accumulated total consumption sensor.
+   - If `current_value == 0.0`, ignore the update entirely (do not calculate $\Delta$ or update the baseline capacity). This prevents active regeneration cycles—where the device drops the remaining capacity of the offline exchanger to `0.0`—from being falsely interpreted as massive water consumption spikes.
    - If $\Delta \le 0$ (e.g. device regenerated or no change), ignore the difference.
 4. To persist this accumulated value across Home Assistant restarts, we will make the Sensor Entity inherit from `RestoreEntity`. On setup, we fetch the last state via `await self.async_get_last_state()` and continue accumulating.
 
