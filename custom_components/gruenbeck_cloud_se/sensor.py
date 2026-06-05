@@ -10,6 +10,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.restore_state import RestoreEntity
+from homeassistant.helpers.storage import Store
 
 from .const import DOMAIN
 from .coordinator import GruenbeckDataUpdateCoordinator
@@ -164,16 +165,33 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         self._state: float = 0.0
         self._last_cap1: float | None = None
         self._last_cap2: float | None = None
+        self._store: Store | None = None
 
     async def async_added_to_hass(self) -> None:
         """Call when entity is added to Home Assistant."""
         await super().async_added_to_hass()
-        if (state := await self.async_get_last_state()) is not None:
-            if state.state not in ("unknown", "unavailable"):
-                try:
-                    self._state = float(state.state)
-                except (ValueError, TypeError):
-                    pass
+        
+        # Initialize the storage handler
+        storage_key = f"{DOMAIN}_{self.coordinator.device_id}_water_consumption"
+        self._store = Store(self.hass, 1, storage_key)
+        
+        # Try to load the state from the store
+        stored_data = await self._store.async_load()
+        if stored_data is not None and "state" in stored_data:
+            try:
+                self._state = float(stored_data["state"])
+            except (ValueError, TypeError):
+                pass
+        else:
+            # Fallback to RestoreEntity's async_get_last_state
+            if (state := await self.async_get_last_state()) is not None:
+                if state.state not in ("unknown", "unavailable"):
+                    try:
+                        self._state = float(state.state)
+                        # Save the restored state immediately to the store
+                        await self._store.async_save({"state": self._state})
+                    except (ValueError, TypeError):
+                        pass
         self.async_write_ha_state()
 
     @property
@@ -190,6 +208,7 @@ class GruenbeckCalculatedWaterConsumptionSensor(
 
         current_cap1 = data.get("mrescapa1")
         current_cap2 = data.get("mRescapa2")
+        state_changed = False
 
         # Exchanger 1 Delta calculation
         if current_cap1 is not None:
@@ -200,6 +219,7 @@ class GruenbeckCalculatedWaterConsumptionSensor(
                     if self._last_cap1 is not None:
                         if current_cap1 < self._last_cap1:
                             self._state += self._last_cap1 - current_cap1
+                            state_changed = True
                     self._last_cap1 = current_cap1
             except (ValueError, TypeError):
                 pass
@@ -213,8 +233,13 @@ class GruenbeckCalculatedWaterConsumptionSensor(
                     if self._last_cap2 is not None:
                         if current_cap2 < self._last_cap2:
                             self._state += self._last_cap2 - current_cap2
+                            state_changed = True
                     self._last_cap2 = current_cap2
             except (ValueError, TypeError):
                 pass
 
         self.async_write_ha_state()
+
+        # Save to store if updated
+        if state_changed and self._store is not None:
+            self.hass.async_create_task(self._store.async_save({"state": self._state}))
