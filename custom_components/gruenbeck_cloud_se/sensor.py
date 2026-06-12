@@ -166,6 +166,7 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         self._last_cap1: float | None = None
         self._last_cap2: float | None = None
         self._store: Store | None = None
+        self._restored: bool = False
 
     async def async_added_to_hass(self) -> None:
         """Call when entity is added to Home Assistant."""
@@ -175,23 +176,34 @@ class GruenbeckCalculatedWaterConsumptionSensor(
         storage_key = f"{DOMAIN}_{self.coordinator.device_id}_water_consumption"
         self._store = Store(self.hass, 1, storage_key)
         
-        # Try to load the state from the store
+        # Try to load the state from both the store and RestoreEntity
+        stored_state: float | None = None
+        restored_state: float | None = None
+
         stored_data = await self._store.async_load()
         if stored_data is not None and "state" in stored_data:
             try:
-                self._state = float(stored_data["state"])
+                stored_state = float(stored_data["state"])
             except (ValueError, TypeError):
                 pass
+
+        if (state := await self.async_get_last_state()) is not None:
+            if state.state not in ("unknown", "unavailable"):
+                try:
+                    restored_state = float(state.state)
+                except (ValueError, TypeError):
+                    pass
+
+        # Select the maximum to ensure the total value never decreases
+        possible_states = [s for s in (stored_state, restored_state) if s is not None]
+        if possible_states:
+            self._state = max(possible_states)
+            # Save the resolved maximum immediately to the store
+            await self._store.async_save({"state": self._state})
         else:
-            # Fallback to RestoreEntity's async_get_last_state
-            if (state := await self.async_get_last_state()) is not None:
-                if state.state not in ("unknown", "unavailable"):
-                    try:
-                        self._state = float(state.state)
-                        # Save the restored state immediately to the store
-                        await self._store.async_save({"state": self._state})
-                    except (ValueError, TypeError):
-                        pass
+            self._state = 0.0
+
+        self._restored = True
         self.async_write_ha_state()
 
     @property
@@ -202,6 +214,9 @@ class GruenbeckCalculatedWaterConsumptionSensor(
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
+        if not self._restored:
+            return
+
         data = self.coordinator.data
         if not data:
             return
