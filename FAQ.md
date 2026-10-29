@@ -27,8 +27,9 @@ There are two primary causes for these freezes:
 We have made the polling interval fully configurable between **10 minutes** and **60 minutes** (with a default of **10 minutes**).
 
 * **Why?** Since the SE series lacks a local API, all updates must be requested from Grünbeck’s cloud servers. Aggressive sub-minute polling (like 10–15 seconds) triggers severe cloud-side rate-limiting at the Azure API Gateway and IoT Hub levels. When throttled, the cloud silently stops dispatching wake-up commands to the physical device. As a result, your device ceases telemetry uploads, and both the official app and Home Assistant will display frozen data from hours ago.
-* **Why are flow rates and regeneration status disabled by default?** Because these metrics change on a second-by-second basis and are not meaningful when checked at a 10-to-60 minute interval. You can still manually enable them in Home Assistant if needed, but a dedicated local smart flow sensor is far superior for real-time water monitoring.
-
+* **How do I see the current flow rate then?** Switch on **Live mode (5 min)**. It polls every 30 seconds for 5 minutes and then returns to the normal interval by itself. Use it occasionally: the short burst is fine, permanent fast polling is not. For permanent real-time flow monitoring a dedicated local flow sensor is still the better choice.
+* **And during a regeneration?** **Track regeneration live** (off by default) polls every minute while a regeneration runs, for at most 60 minutes.
+* **Does reading settings and daily values count against the limit?** No. Device information, settings and daily values come from read-only cloud endpoints that do not wake the device. They are read hourly or with the **Fetch settings now** button.
 ---
 
 ### 4. Is this integration officially supported by Grünbeck? What is their attitude towards open APIs?
@@ -44,8 +45,28 @@ Grünbeck's overall openness to open APIs or local integrations for their newer 
 ### 5. How can I detect if the telemetry data has become stale or frozen?
 Because the Grünbeck Cloud API will still respond with `200 OK` and a valid JSON payload containing your last cached state even if your physical device has been offline or frozen for days, there is no direct "offline" status field in the JSON payload itself. 
 
-However, you can easily detect a frozen state using these indicators:
-1. **Check the "Device Error" Sensor**: If the physical device has an unacknowledged error, it stops uploading telemetry entirely. If `binary_sensor.device_error` is in a `Problem` state, your other sensor metrics are likely frozen.
-2. **Verify flow vs. capacity changes**: If water is running (e.g., your flow rate is above zero) but your remaining capacities do not decrease at all over several minutes, the connection between the device and the cloud has frozen.
-3. **Lovelace / Template Alert**: You can build a Home Assistant template helper to alert you if the `last_changed` timestamp of your total `sensor.calculated_water_consumption` has not updated for a prolonged period (e.g., 6 hours), which indicates an inactive cloud feed.
+The integration provides the sensor **Data last changed** (diagnostic). It shows when the telemetry last changed. If it does not change for hours although water is used, the data is frozen.
 
+Further indicators:
+1. **Device error**: If the physical device has an unacknowledged error, it stops uploading telemetry. If *Device error* is on, the other values are likely frozen.
+2. **Flow vs. capacity**: If water is running but the remaining capacity does not decrease over several polls, the connection between the device and the cloud has frozen.
+
+---
+
+### 6. Which models are supported?
+The integration is tested on a **softliQ SE21**. The model is detected from the series and type reported by the cloud (for the SE series the type is 100 + size, e.g. 121 = SE21). On the **SE18** the salt warning and LED ring entities are not created, because the SE18 has no salt level sensor and no LED ring. Devices of other series (e.g. **softliQ SD**) keep the exchanger 2 sensors. New controls appear only if the cloud reports the matching parameter. If you own another model, please open an issue with a diagnostics download.
+
+---
+
+### 7. Why is "Last regeneration" unknown?
+The cloud reports neither the time of the last regeneration nor a regeneration history (the history shown on the device display is stored on the device only). The integration records a regeneration when the regeneration count increases, so the sensor is unknown until the first regeneration after installation. With **Track regeneration live** the time is accurate to about one minute, otherwise to the polling interval.
+
+---
+
+### 8. How do I find out which cloud parameter belongs to an option in the app?
+Change the option in the Grünbeck app, wait about a minute and press **Fetch settings now**. The sensor **Changed settings** lists the changed parameter with old and new value in its `changes` attribute. The list is also part of the diagnostics download. This is how the iQ-Mode, signal and LED ring controls were mapped.
+
+---
+
+### 9. Is the integration available in other languages?
+Entity names, states, attributes and device names are translated to English and German and follow the language of the user profile. The `description` attribute follows the system language of Home Assistant. Other languages fall back to English; translations are welcome.

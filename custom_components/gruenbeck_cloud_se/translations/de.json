@@ -42,5 +42,2287 @@
       "cannot_connect": "Verbindung mit der Grünbeck Cloud API fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung.",
       "invalid_scan_interval": "Das Abfrageintervall muss zwischen 10 und 60 Minuten betragen, um die API-Stabilität zu gewährleisten."
     }
+  },
+  "entity": {
+    "sensor": {
+      "mrescapa1": {
+        "name": "Restkapazität",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mresidcap1": {
+        "name": "Restkapazität Prozent",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcapacity": {
+        "name": "Kapazität pro Regeneration",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcountreg": {
+        "name": "Anzahl Regenerationen",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "msaltusage": {
+        "name": "Salzverbrauch",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mflow1": {
+        "name": "Durchfluss",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcurrent": {
+        "name": "Chlorzellenstrom",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mregstatus": {
+        "name": "Regenerationsstatus",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcountwater1": {
+        "name": "Wassermenge 0 °dH",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcountwater2": {
+        "name": "Weichwasserzähler 2",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mcountwatertank": {
+        "name": "Nachspeisemenge",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mmaint": {
+        "name": "Nächste Wartung in",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mhardsoftw": {
+        "name": "Weichwasserhärte Istwert",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mlifeadsorb": {
+        "name": "Adsorber erschöpft",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mflowmax": {
+        "name": "Spitzendurchfluss",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mendreg1": {
+        "name": "Letzte Regeneration",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mendreg2": {
+        "name": "Letzte Regeneration 2",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mregpercent1": {
+        "name": "Regenerationsfortschritt",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mremregstep": {
+        "name": "Restdauer Regenerationsschritt",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "startup": {
+        "name": "Inbetriebnahme",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "software_version": {
+        "name": "Softwareversion",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "last_error": {
+        "name": "Letzte Fehlermeldung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "raw_water_hardness": {
+        "name": "Rohwasserhärte",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "soft_water_hardness": {
+        "name": "Weichwasserhärte Sollwert",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "regeneration_time": {
+        "name": "Regenerationszeiten",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "maintenance_interval": {
+        "name": "Wartungsintervall",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "nominal_flow": {
+        "name": "Nenndurchfluss",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "water_yesterday": {
+        "name": "Wasserverbrauch gestern",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "lime_retained_yesterday": {
+        "name": "Zurückgehaltener Kalk gestern",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "salt_yesterday": {
+        "name": "Salzverbrauch gestern",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "salt_daily_sum": {
+        "name": "Salzverbrauch Summe Tageswerte",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "calculated_water_consumption": {
+        "name": "Berechneter Wasserverbrauch",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "average_flow_rate": {
+        "name": "Mittlerer Durchfluss (letztes Intervall)",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "data_last_changed": {
+        "name": "Daten zuletzt geändert",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "regeneration_phase": {
+        "name": "Regenerationsphase",
+        "state": {
+          "inactive": "Inaktiv",
+          "fill_salt_tank": "Salzbehälter füllen",
+          "salting": "Besalzen",
+          "displacement": "Verdrängen",
+          "backwashing": "Rückspülen",
+          "washing_out": "Auswaschen",
+          "other": "Sonstige"
+        },
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "next_regeneration_window": {
+        "name": "Nächstes Regenerationsfenster",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "last_regeneration": {
+        "name": "Letzte Regeneration",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "next_maintenance": {
+        "name": "Nächste Wartung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "next_inspection": {
+        "name": "Nächste Inspektion",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "maintenance_days_remaining": {
+        "name": "Tage bis Wartung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "inspection_days_remaining": {
+        "name": "Tage bis Inspektion",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "setting_changes": {
+        "name": "Geänderte Einstellungen",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mrescapa2": {
+        "name": "Restkapazität Austauscher 2",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mresidcap2": {
+        "name": "Restkapazität Austauscher 2 Prozent",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mflow2": {
+        "name": "Durchfluss Austauscher 2",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "mflowblend": {
+        "name": "Durchfluss Verschneidung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "last_poll": {
+        "name": "Letzte Abfrage",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    },
+    "binary_sensor": {
+      "has_error": {
+        "name": "Gerätefehler",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "salt_warning": {
+        "name": "Salzwarnung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "regeneration_running": {
+        "name": "Regeneration läuft",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    },
+    "number": {
+      "led_brightness": {
+        "name": "Helligkeit LED-Ring",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    },
+    "switch": {
+      "live_mode": {
+        "name": "Live-Modus (5 Min.)",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "track_regeneration": {
+        "name": "Regeneration live verfolgen",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "buzzer": {
+        "name": "Signal bei Störung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "iq_mode": {
+        "name": "iQ-Mode",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "led_ring_permanent": {
+        "name": "LED-Ring dauerhaft aktiv",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "led_ring_failure": {
+        "name": "LED-Ring aktiv bei Störung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "led_ring_message": {
+        "name": "LED-Ring aktiv bei Meldung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "led_ring_flow": {
+        "name": "LED-Ring aktiv bei Durchfluss",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    },
+    "date": {
+      "last_maintenance": {
+        "name": "Letzte Wartung",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "last_inspection": {
+        "name": "Letzte Inspektion",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    },
+    "button": {
+      "maintenance_done": {
+        "name": "Wartung erledigt",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "inspection_done": {
+        "name": "Inspektion erledigt",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      },
+      "refresh_settings": {
+        "name": "Einstellungen jetzt abrufen",
+        "state_attributes": {
+          "description": {
+            "name": "Beschreibung"
+          },
+          "daily": {
+            "name": "Tageswerte"
+          },
+          "errors": {
+            "name": "Fehler"
+          },
+          "consumed_liters": {
+            "name": "Verbrauch seit letzter Abfrage (L)"
+          },
+          "raw_value": {
+            "name": "Rohwert"
+          },
+          "days": {
+            "name": "Tage"
+          },
+          "first_day": {
+            "name": "Erster Tag"
+          },
+          "regeneration_count": {
+            "name": "Regenerationszähler"
+          },
+          "history": {
+            "name": "Verlauf"
+          },
+          "changes": {
+            "name": "Änderungen"
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "command_failed": {
+      "message": "Befehl an die Grünbeck-Cloud fehlgeschlagen: {error}"
+    }
+  },
+  "device": {
+    "consumption": {
+      "name": "Grünbeck Verbrauch"
+    },
+    "settings": {
+      "name": "Grünbeck Einstellungen"
+    },
+    "daily": {
+      "name": "Grünbeck Tageswerte (Cloud)"
+    },
+    "maintenance": {
+      "name": "Grünbeck Wartung"
+    }
   }
 }

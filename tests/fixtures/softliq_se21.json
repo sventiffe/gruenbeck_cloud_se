@@ -1,0 +1,203 @@
+{
+  "update": {
+    "mrescapa1": 300.0,
+    "mRescapa2": 380.0,
+    "mflow1": 0.0,
+    "mflow2": 0.0,
+    "mflowblend": 0.0,
+    "msaltrange": true,
+    "mregstatus": 0,
+    "mflowreg2": 0.0,
+    "mregpercent2": 0,
+    "mresidcap1": 79,
+    "mresidcap2": 100,
+    "mstep2": false,
+    "mreswatadmod": 0.0,
+    "iregtrig": "0",
+    "mcountwater1": 3,
+    "mlime": 0,
+    "mtemp": -9.0,
+    "type": 121,
+    "hasError": false,
+    "isRegistered": false,
+    "mcountreg": 12,
+    "mcapacity": 8.0,
+    "msaltusage": 0.0,
+    "mcountwatertank": 2,
+    "id": "softliQ.SE/TEST",
+    "series": "softliQ.SE",
+    "serialNumber": "000000",
+    "name": "Test",
+    "register": false
+  },
+  "info": {
+    "errors": [],
+    "timeZone": "+00:00",
+    "regMode": 0,
+    "estatus": 0,
+    "regTrig": "0",
+    "startUp": "2026.01.15",
+    "swVersion": "0004.0230",
+    "hwVersionCl": "00000007",
+    "sncu": "000000",
+    "calcRegMo1": null,
+    "installedOn": "2026-01-10T10:00:00",
+    "regMo1": "2026-02-01T02:00:00",
+    "type": 121,
+    "hasError": false,
+    "isRegistered": false,
+    "id": "softliQ.SE/TEST",
+    "series": "softliQ.SE",
+    "serialNumber": "000000",
+    "name": "Test",
+    "register": false
+  },
+  "parameters": {
+    "$pending": [],
+    "pallowemail": true,
+    "pallowpushnotification": true,
+    "phdist": 24,
+    "pmaxvolmaxcap": 2.15,
+    "psetsoft": 4.0,
+    "pminvolmaxcap": 0.82,
+    "pwashingout": 4.0,
+    "pminvolmincap": 0.17,
+    "pregtu3": "--:--",
+    "pcurrent": 700,
+    "pregmo2": "10:00",
+    "pregwe1": "--:--",
+    "planguage": 1,
+    "phcurrent": 300,
+    "psetcapmo": 20.0,
+    "ptimezone": "01:00",
+    "pmaxvolmincap": 0.49,
+    "pregfr1": "--:--",
+    "pmaintint": 365,
+    "pregmo1": "02:00",
+    "pfreqregvalve": 200,
+    "pregwe2": "--:--",
+    "poverload": false,
+    "phload": 500,
+    "pdate": "2026.02.01",
+    "pforcedregdist": 3,
+    "pmonregmeter": 20.0,
+    "pmonsalting": 75.0,
+    "pregtu2": "--:--",
+    "pregwe3": "--:--",
+    "pregsa1": "--:--",
+    "pbuzzer": true,
+    "ppratesoftwater": 0.0043,
+    "pregsu1": "--:--",
+    "pregth1": "--:--",
+    "pregtu1": "--:--",
+    "pinspect": 180,
+    "pmondisinf": true,
+    "pdstdby": true,
+    "pmode": 2,
+    "pregmode": false,
+    "pclearcntreg": false,
+    "purlcloud1": "gruenbeckeu01.azure-devices.net",
+    "phunit": false,
+    "pregsa2": "--:--",
+    "pled": 8,
+    "pdlstauto": true,
+    "prawhard": 25.0,
+    "purlcloud2": "",
+    "phwashingout": 5.0,
+    "phbackwash": 16.0,
+    "pregsa3": "--:--",
+    "pregsu3": "--:--",
+    "pactcurrent": 3,
+    "pfreqblendvalve": 300,
+    "pnomflow": 2.1,
+    "pregsu2": "--:--",
+    "pregfr3": "--:--",
+    "pregmo3": "18:00",
+    "pbackwash": 12.0,
+    "purlcert": "prodeugruenbeckfirmware.blob.core.windows.net/cert",
+    "pdurcurrent": 600,
+    "pledbright": 100,
+    "pload": 2000,
+    "pregfr2": "--:--",
+    "pmodedesinf": 3,
+    "pntpsync": true,
+    "pprateregwater": 0.0039,
+    "pfreqregvalve2": 200,
+    "pprateblending": 0.004,
+    "pclearerrmem": false,
+    "pclearcntwater": false,
+    "pcontinent": 0,
+    "pmaxdurdisinfect": 4.0,
+    "pregth3": "--:--",
+    "prinsing": 9.5,
+    "pvolhyg": 8.8,
+    "pregth2": "--:--"
+  },
+  "water": [
+    {
+      "date": "2026-01-25",
+      "value": 150,
+      "limeRetained": 66
+    },
+    {
+      "date": "2026-01-26",
+      "value": 210,
+      "limeRetained": 92
+    },
+    {
+      "date": "2026-01-27",
+      "value": 180,
+      "limeRetained": 79
+    },
+    {
+      "date": "2026-01-28",
+      "value": 260,
+      "limeRetained": 114
+    },
+    {
+      "date": "2026-01-29",
+      "value": 175,
+      "limeRetained": 77
+    },
+    {
+      "date": "2026-01-30",
+      "value": 195,
+      "limeRetained": 86
+    },
+    {
+      "date": "2026-01-31",
+      "value": 220,
+      "limeRetained": 97
+    }
+  ],
+  "salt": [
+    {
+      "date": "2026-01-25",
+      "value": 0
+    },
+    {
+      "date": "2026-01-26",
+      "value": 180
+    },
+    {
+      "date": "2026-01-27",
+      "value": 0
+    },
+    {
+      "date": "2026-01-28",
+      "value": 150
+    },
+    {
+      "date": "2026-01-29",
+      "value": 160
+    },
+    {
+      "date": "2026-01-30",
+      "value": 0
+    },
+    {
+      "date": "2026-01-31",
+      "value": 170
+    }
+  ]
+}

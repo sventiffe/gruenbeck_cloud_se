@@ -1,147 +1,203 @@
 # Grünbeck Cloud SE Series for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![Community Forum](https://img.shields.io/badge/community-forum-brightgreen.svg)](https://community.home-assistant.io/)
 
-A custom, low-frequency monitoring integration specifically designed for **Grünbeck SE Series** (`softliQ.SE`, `softliQ.SD`) cloud-connected water softeners.
+A custom integration for cloud-connected **Grünbeck softliQ SE** water softeners (`softliQ.SE`: SE18, SE21, SE24). Devices of other series that use the same cloud API (e.g. `softliQ.SD`) keep working as before; see [Supported devices](#supported-devices).
+
+The integration monitors the softener at a cloud-safe interval and adds what the cloud offers beyond the live telemetry: daily water and salt values, device information, settings, controls for the settings that are also available in the Grünbeck app, and maintenance tracking. All entity names, states and descriptions are available in **English and German** and follow the language of Home Assistant.
 
 > [!WARNING]
-> **Is a Grünbeck Softener right for your Smart Home?**
-> If you are currently shopping for a water softener and plan to integrate it deeply into your smart home (e.g. Home Assistant), **Grünbeck might not be your best choice.**
-> * **No Local API**: Newer models (`softliQ.SD` and `softliQ.SE` series) do not offer a local API. All data must route through Grünbeck's proprietary, closed Azure-hosted cloud servers.
-> * **Strict Rate Limits**: High-frequency sub-minute polling (like 15 seconds) will trigger severe cloud-side rate limiting (C2D MQTT command throttling), completely freezing your telemetry and making both this integration and your official mobile app show stale data.
-> * **Our Approach**: This integration is designed specifically for **low-frequency monitoring** of slow-moving basic parameters (capacities, salt levels, error states, and long-term water consumption statistics) at a safe **10 to 60-minute interval** (defaulting to 10 minutes) to keep your cloud connection perfectly stable.
+> **Is a Grünbeck softener right for your smart home?**
+> * **No local API**: The `softliQ.SD` and `softliQ.SE` series have no local API. All data goes through Grünbeck's cloud.
+> * **Strict rate limits**: Polling the live telemetry more often than about once a minute for a longer time makes the cloud stop forwarding requests to the device. The data then freezes for 1–3 hours, in Home Assistant and in the Grünbeck app. The default interval is **10 minutes**.
 >
-> If you own a different Grünbeck model (such as the `softliQ.SC` series, which supports local offline LAN polling) or prefer general-purpose cloud polling, you should consider using **[hagruenbeck_cloud](https://github.com/p0l0/hagruenbeck_cloud)** instead.
+> For the `softliQ.SC` series (local LAN access) or general-purpose cloud polling, see **[hagruenbeck_cloud](https://github.com/p0l0/hagruenbeck_cloud)**.
 
 > [!IMPORTANT]
-> **Prerequisites & Library Conflicts**
-> Home Assistant restricts loading multiple versions of the same dependency library (`pygruenbeck_cloud`). If you currently have the general-purpose `hagruenbeck_cloud` integration installed, you **must completely uninstall it and restart Home Assistant** before installing this integration to avoid library dependency conflicts (`Unable to login`).
+> **Library conflict**: Home Assistant can load only one version of `pygruenbeck_cloud`. Uninstall `hagruenbeck_cloud` and restart Home Assistant before installing this integration, otherwise login fails (`Unable to login`).
 
 ---
 
-## Key Features
+## Features
 
-*   **Low-Frequency Monitoring (Configurable 10–60m, Default 10m)**: Polls exchanger capacities, percentages, salt levels, and error states dynamically at a cloud-safe interval.
-*   **Duplex Calculated Water Consumption**: Water consumption is not directly reported by the cloud API. This integration solves that by monitoring capacity decreases across **both** Exchangers (duplex system) and accumulating precise water consumption in Liters (`L`), persisting it safely across Home Assistant restarts.
-*   **Registry-Disabled Fast Sensors**: Rapidly changing parameters (like flow rates and regeneration status) are disabled by default in the Home Assistant registry. Because they change on a second-by-second basis physically, catching them on a 10-minute cloud polling cycle will mostly result in stale or zero values, so they are kept disabled by default to avoid cluttering your dashboard. You can manually re-enable them in the entity settings if desired.
-*   **User-Friendly Config Flow**: Set up the integration directly via the Home Assistant integrations frontend (simply input your username and password, then select your water softener from the discovered list).
+* **Live telemetry** (default every 10 minutes, configurable 10–60): remaining capacity, flow rate, regeneration phase, regeneration count, error and salt state.
+* **Cloud data without waking the device** (hourly): device information and error list, settings, daily water, lime and salt values. These endpoints only read the cloud cache and do not count against the rate limit.
+* **Controls** like in the Grünbeck app: iQ-Mode, signal on failure, LED ring options and brightness.
+* **Live mode**: polls every 30 seconds for 5 minutes, e.g. to see the current flow rate, then returns to the normal interval by itself.
+* **Regeneration tracking** (opt-in): polls every minute while a regeneration runs (max. 60 minutes).
+* **Calculated water consumption** for the Energy dashboard, derived from the remaining capacity.
+* **Regeneration history**: time of the last regeneration and the last 20 regenerations with the remaining capacity before each one. The cloud does not provide this, so it is recorded by Home Assistant.
+* **Maintenance and inspection tracking**: next due date from the intervals configured in the device, editable date of the last service and "done" buttons.
+* **Frozen data detection**: a timestamp of the last change in the telemetry.
+* **Setting change log**: records which cloud parameter changed, e.g. after changing an option in the app.
+* **Descriptions**: every entity has a `description` attribute explaining what it shows, in the language of Home Assistant.
+* **Diagnostics download** with the raw cloud responses (credentials and serial numbers redacted).
 
 ---
 
-## Entities Provided
+## Supported devices
 
-| Platform | Entity Name | Description | Default Registry State |
-|---|---|---|---|
-| `sensor` | Exchanger 1 Remaining Capacity | Remaining soft water capacity for Exchanger 1 in Liters (`L`) | **Enabled** |
-| `sensor` | Exchanger 2 Remaining Capacity | Remaining soft water capacity for Exchanger 2 in Liters (`L`) | **Enabled** |
-| `sensor` | Exchanger 1 Remaining Capacity Percent | Percentage remaining for Exchanger 1 Exchanger (`%`) | **Enabled** |
-| `sensor` | Exchanger 2 Remaining Capacity Percent | Percentage remaining for Exchanger 2 Exchanger (`%`) | **Enabled** |
-| `sensor` | Exchanger 1 Flow Rate | Live soft water flow rate through Exchanger 1 (`m³/h`) | *Disabled by default* |
-| `sensor` | Exchanger 2 Flow Rate | Live soft water flow rate through Exchanger 2 (`m³/h`) | *Disabled by default* |
-| `sensor` | Blended Flow Rate | Combined soft water flow rate (`m³/h`) | *Disabled by default* |
-| `sensor` | Calculated Water Consumption | High-precision total accumulated water consumption (`L`), ideal for utility meters | **Enabled** |
-| `sensor` | Salt Usage | Accumulated salt usage in kilograms (`kg`) | **Enabled** |
-| `sensor` | Regeneration Capacity | Nominal soft water capacity (`m³`) | **Enabled** |
-| `sensor` | Regeneration Count | Number of regenerations performed | **Enabled** |
-| `sensor` | Regeneration Status | Current operational phase of regeneration | *Disabled by default* |
-| `binary_sensor` | Device Error | Active problem state if the softener reports any internal errors | **Enabled** |
-| `binary_sensor` | Salt Warning | Active problem state if salt levels are low or need attention | **Enabled** |
+| Device | Status |
+|---|---|
+| softliQ SE21 (type 121) | Tested, all controls verified on a real device |
+| softliQ SE18 (type 118) | Expected to work; no salt warning, LED ring or leakage entities (not present on the SE18) |
+| softliQ SE24 (type 124) | Expected to work like the SE21 |
+| softliQ SD and other series | Behaves as before: exchanger 2 sensors are kept. New controls appear only if the cloud reports the matching parameter. Not verified |
+
+The model is detected from the series and type reported by the cloud and shown on the device page (e.g. "softliQ SE21"). Reports from other models are welcome: please attach a diagnostics download to an issue.
+
+---
+
+## Entities
+
+Entities are grouped into the main device and four sub-devices, linked via "Connected via" on the device page.
+
+### Main device
+
+| Platform | Entity | Description |
+|---|---|---|
+| `sensor` | Remaining capacity | Soft water left until the next regeneration (`L`) |
+| `sensor` | Remaining capacity percent | Remaining capacity in `%` |
+| `sensor` | Flow rate | Current soft water flow (`L/min`). Only up to date in live mode or while water is running during a poll |
+| `sensor` | Regeneration phase | Inactive, filling the brine tank, brining, displacement, backwashing, washing out (raw value as attribute) |
+| `sensor` | Regeneration count | Number of regenerations since start-up |
+| `sensor` | Last regeneration | Detected when the regeneration count increases. Attribute `history`: last 20 regenerations |
+| `sensor` | Next regeneration window | Next configured regeneration time. In iQ-Mode the device decides itself whether it regenerates then |
+| `sensor` | Last error | Message of the newest open error, `OK` if none. Attribute `errors`: full list |
+| `sensor` | Chlorine cell current | Current of the disinfection cell (`mA`), only non-zero during disinfection |
+| `sensor` | Software version, Start-up date | Device information (diagnostic) |
+| `sensor` | Regeneration status | Raw status code (disabled by default) |
+| `sensor` | Last poll | Time of the last successful poll of the telemetry (diagnostic) |
+| `sensor` | Data last changed | Time of the last change in the telemetry (diagnostic) |
+| `sensor` | Changed settings | Time of the last changed setting, attribute `changes` with the last changes (diagnostic) |
+| `binary_sensor` | Device error | On if the device reports an error |
+| `binary_sensor` | Salt warning | On if the salt supply is low (not on the SE18) |
+| `binary_sensor` | Regeneration running | On while a regeneration step is active |
+| `switch` | Live mode (5 min) | Poll every 30 s for 5 minutes |
+| `button` | Fetch settings now | Read device information and settings immediately (does not wake the device) |
+
+On devices with two exchangers (not the softliQ SE) the main device also has *Remaining capacity exchanger 2*, *Remaining capacity exchanger 2 percent*, *Flow exchanger 2* and *Blended flow*.
+
+### Consumption
+
+| Platform | Entity | Description |
+|---|---|---|
+| `sensor` | Calculated water consumption | Lifetime total in `L`, for the Energy dashboard |
+| `sensor` | Average flow rate (last interval) | Average flow between the last two polls (`L/min`) |
+| `sensor` | Water volume 0 °dH | Soft water meter of the device (`m³`, whole m³) |
+| `sensor` | Make-up water | Water used to refill the brine tank (`L`) |
+| `sensor` | Salt usage | Total salt usage reported by the device (`kg`). Stays at 0 on some SE devices, use *Salt usage sum of daily values* instead |
+
+### Daily values
+
+| Platform | Entity | Description |
+|---|---|---|
+| `sensor` | Water usage yesterday | `L`; attribute `daily` with the last 14 days |
+| `sensor` | Lime retained yesterday | `g` |
+| `sensor` | Salt usage yesterday | `g` |
+| `sensor` | Salt usage sum of daily values | `kg`, sum of all daily values the cloud returns |
+
+The cloud only provides completed days, so there is no value for today.
+
+### Maintenance
+
+| Platform | Entity | Description |
+|---|---|---|
+| `date` | Last maintenance, Last inspection | Stored in Home Assistant (the cloud does not know them). Default: start-up date |
+| `button` | Maintenance done, Inspection done | Set the date to today |
+| `sensor` | Next maintenance, Next inspection | Last date plus the interval configured in the device |
+| `sensor` | Days until maintenance, Days until inspection | Negative when overdue |
+| `sensor` | Maintenance interval | From the device (`d`) |
+
+### Settings
+
+| Platform | Entity | Description |
+|---|---|---|
+| `switch` | iQ-Mode | On: the device chooses the regeneration time itself. Off: regeneration at the fixed times only |
+| `switch` | Signal on failure | Acoustic signal on failures, leakage and frost warnings |
+| `switch` | LED ring permanently on / on failure / on message / on flow | As in the app. The device stores one value, so the switches depend on each other: *permanently on* switches the others off, *on message* includes *on failure*, *on flow* includes both |
+| `number` | LED ring brightness | 0–100 % |
+| `switch` | Track regeneration live | Opt-in, see [Polling](#polling-and-rate-limits) |
+| `sensor` | Raw water hardness, Soft water hardness setpoint, Regeneration times, Nominal flow rate, Regeneration capacity | From the device settings |
+
+Changed settings are first shown as pending by the cloud until the device has picked them up.
+
+---
+
+## Polling and rate limits
+
+| Mode | Interval | Duration |
+|---|---|---|
+| Normal | 10 minutes (configurable 10–60) | permanent |
+| Live mode | 30 seconds | 5 minutes, then back to normal |
+| Track regeneration live | 1 minute | while a regeneration runs, max. 60 minutes |
+| Device info, settings, daily values | 1 hour (or the *Fetch settings now* button) | permanent, does not wake the device |
+
+Live mode and regeneration tracking poll faster than the normal interval for a limited time. Use them occasionally; if the data freezes afterwards, wait for the cloud to recover.
 
 ---
 
 ## Installation
 
-### Method 1: HACS (Recommended)
+### HACS (recommended)
 
-1.  Open **Home Assistant**, go to **HACS** -> **Integrations**.
-2.  Click the three dots in the top-right corner and select **Custom repositories**.
-3.  Enter the URL of your GitHub repository: `https://github.com/sventiffe/gruenbeck_cloud_se` and select **Integration** as the category.
-4.  Click **Add**.
-5.  Click on the newly added integration and click **Download**.
-6.  Restart Home Assistant.
+1. In **HACS**, open the three-dot menu and select **Custom repositories**.
+2. Add `https://github.com/sventiffe/gruenbeck_cloud_se` with category **Integration**.
+3. Download the integration and restart Home Assistant.
 
-### Method 2: Manual Installation
+### Manual
 
-1.  Download the repository content as a ZIP file.
-2.  Copy the folder `custom_components/gruenbeck_cloud_se/` from the ZIP into your Home Assistant's `config/custom_components/` directory.
-3.  Restart Home Assistant.
-
----
+Copy `custom_components/gruenbeck_cloud_se/` into `config/custom_components/` and restart Home Assistant.
 
 ## Configuration
 
-1.  In the Home Assistant UI, navigate to **Settings** -> **Devices & Services**.
-2.  Click **Add Integration** in the bottom-right corner.
-3.  Search for **Grünbeck Cloud SE Series** and select it.
-4.  Enter your Grünbeck Cloud username and password.
-5.  Select your discovered water softener device from the dropdown and complete setup.
+1. **Settings → Devices & services → Add integration**, search for **Grünbeck Cloud SE Series**.
+2. Enter your Grünbeck cloud login. Use exactly the email address the account was registered with (e.g. `@googlemail.com` vs. `@gmail.com`).
+3. Select your softener.
 
-### Dynamic Options (Password & Polling Interval)
+Via **Configure** on the integration card you can change the password and the polling interval at any time.
 
-Once configured, you can click the **Configure** (German: *Konfigurieren*) button on the integration's card in **Settings -> Devices & Services** to dynamically manage your settings without having to delete the integration or lose your calculated water consumption total:
-* **Cloud Password**: Easily update your password if you rotate it. The integration will securely re-authenticate with the Grünbeck Cloud automatically.
-* **Polling Interval**: Adjust the cloud polling frequency in minutes. The default is **10 minutes**, with a configurable range of **10 to 60 minutes** to remain completely safe from cloud-side rate-limiting and telemetry freezes (see [FAQ.md](file:///Users/sven/homeassistant/FAQ.md) for rate-limiting guidelines).
+### Upgrading from 0.1.x
+
+Entities that no longer exist (exchanger 2 on softliQ SE devices, sensors that are always 0, the operation mode and regeneration button) are removed automatically on startup. Entity IDs of existing entities do not change. The unit of *Make-up water* changed from `m³` to `L`; Home Assistant may report a unit change under **Developer tools → Statistics**, which can be confirmed there. *Regeneration status* no longer has a state class (it is a status code, not a measurement); Home Assistant then offers to delete its old long-term statistics, which is safe.
 
 ---
 
-## Calculated Water Consumption & Dashboards
+## Water consumption dashboards
 
-The **Calculated Water Consumption** sensor is a continuous, lifetime accumulator (acting like a physical utility/smart water meter). It starts at `0.0 L` on installation and increases indefinitely, safely persisting across Home Assistant restarts.
+*Calculated water consumption* has `device_class: water` and `state_class: total_increasing`:
 
-To prevent false water consumption spikes, the sensor automatically filters out any remaining capacity updates of exactly `0.0 L`. During active regeneration cycles, the device temporarily drops the offline exchanger's remaining capacity to `0.0 L` before resetting it to full capacity. By ignoring this transient `0.0 L` state, the integration ensures that capacity resets or purges are never falsely recorded as water usage.
+* **Energy dashboard**: **Settings → Dashboards → Energy → Water consumption → Add water source**, select *Calculated water consumption*.
+* **Daily/weekly counters**: create a **Utility meter** helper with *Calculated water consumption* as input sensor.
 
-Since it is configured with `device_class: water` and `state_class: total_increasing`, it integrates natively with Home Assistant. Below are two popular methods to set up dashboards for tracking your daily, weekly, or monthly water usage.
-
-### Method A: Home Assistant Native "Energy & Water" Dashboard (Recommended)
-
-Home Assistant has a built-in dashboard dedicated to utility metrics. It automatically handles all hourly, daily, weekly, and monthly calculations and builds beautiful bar charts:
-
-1. Go to **Settings** -> **Dashboards** -> **Energy** (German: *Einstellungen* -> *Dashboards* -> *Energie*).
-2. Scroll down to the **Water Consumption** (*Wasserverbrauch*) section.
-3. Click **Add Water Source** (*Wasserquelle hinzufügen*).
-4. Select **Calculated Water Consumption** from the dropdown.
-5. Click **Save**.
-
-*Within 1-2 hours, Home Assistant will begin displaying beautiful, native bar graphs tracking your usage over time.*
-
-### Method B: Lovelace Dashboard Cards (Daily/Weekly Resets)
-
-If you want to display exact numeric values on your main Lovelace dashboard that reset on a fixed cycle (e.g. at midnight or at the end of the week):
-
-1. Go to **Settings** -> **Devices & Services** -> **Helpers** (*Einstellungen* -> *Geräte & Dienste* -> *Helfer*).
-2. Click **Create Helper** (*Helfer erstellen*) in the bottom-right corner.
-3. Select **Utility Meter** (*Verbrauchszähler*).
-4. Configure a **Daily** counter:
-   * **Name**: `Daily Water Consumption`
-   * **Input Sensor**: `Calculated Water Consumption` (`sensor.calculated_water_consumption`)
-   * **Meter reset cycle**: `Daily`
-5. Click **Create**.
-6. Repeat the same steps to create a **Weekly** helper (selecting `Weekly` as the reset cycle).
-
-This creates two new sensors (`sensor.daily_water_consumption` and `sensor.weekly_water_consumption`) which you can add to standard Lovelace cards (like Gauge, History Graph, or Stat cards) on your main dashboard!
+The sensor ignores the transient `0 L` capacity during regeneration, so capacity resets are not counted as usage.
 
 ---
 
-## Local Verification & Testing
+## Known limitations
 
-This project includes a fully mocked local simulator script to validate code and fetch real-time metrics completely independent of a live Home Assistant environment:
+* The cloud provides no time of the last or next regeneration and no regeneration history. The integration records regenerations from the next one after installation.
+* A manual regeneration cannot be started via the cloud on the SE series (`POST /regenerate` returns 404).
+* The leakage protection is not exposed by the cloud. A leakage alarm arrives as a device error.
+* Operation modes (Eco/Comfort/Power) do not exist on the SE series and are not offered.
+
+## Troubleshooting
+
+If the device shows an unacknowledged error on its display, it stops sending telemetry and the data freezes in the app and in Home Assistant. Acknowledge the error on the device. *Data last changed* shows since when the data has not changed.
+
+For bug reports, attach the diagnostics download (**Settings → Devices & services → Grünbeck Cloud SE Series → ⋮ → Download diagnostics**). Credentials and serial numbers are redacted.
+
+---
+
+## Development
+
+Tests run against recorded (anonymized) cloud responses of a softliQ SE21, without a Grünbeck account:
 
 ```bash
-# Execute simulator using your virtual environment
-./gruenbeck-venv/bin/python simulate.py
+pip install -r requirements_test.txt
+pytest
 ```
 
 ---
 
-## Troubleshooting & Device Telemetry
-
-> [!TIP]
-> **Active Device Error & Frozen Telemetry**
-> If your physical Grünbeck water softener has an active, unacknowledged error shown on its display:
-> 1. The device will **stop sending new telemetry data** to the Grünbeck Cloud.
-> 2. The official Grünbeck mobile app will show frozen/outdated data.
-> 3. This Home Assistant integration's **Device Error** binary sensor will switch to `Problem`, and all other sensor values will stop updating (appearing frozen).
-> 
-> **How to resolve**: Simply walk over to your physical water softener and acknowledge/clear the active error on its display screen. Telemetry transmission to the cloud will immediately resume, the **Device Error** binary sensor will return to `OK`, and the integration will instantly resume receiving live data.
-
+This integration is not affiliated with or supported by Grünbeck.

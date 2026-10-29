@@ -42,5 +42,2287 @@
       "cannot_connect": "Failed to connect to the Grünbeck Cloud API. Please check your internet connection.",
       "invalid_scan_interval": "The polling interval must be between 10 and 60 minutes to keep the cloud API stable."
     }
+  },
+  "entity": {
+    "sensor": {
+      "mrescapa1": {
+        "name": "Remaining capacity",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mresidcap1": {
+        "name": "Remaining capacity percent",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcapacity": {
+        "name": "Regeneration capacity",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcountreg": {
+        "name": "Regeneration count",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "msaltusage": {
+        "name": "Salt usage",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mflow1": {
+        "name": "Flow rate",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcurrent": {
+        "name": "Chlorine cell current",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mregstatus": {
+        "name": "Regeneration status",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcountwater1": {
+        "name": "Water volume 0 °dH",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcountwater2": {
+        "name": "Soft water meter 2",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mcountwatertank": {
+        "name": "Make-up water",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mmaint": {
+        "name": "Next service in",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mhardsoftw": {
+        "name": "Soft water hardness actual",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mlifeadsorb": {
+        "name": "Adsorber exhausted",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mflowmax": {
+        "name": "Peak flow rate",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mendreg1": {
+        "name": "Last regeneration",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mendreg2": {
+        "name": "Last regeneration 2",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mregpercent1": {
+        "name": "Regeneration progress",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mremregstep": {
+        "name": "Regeneration step remaining",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "startup": {
+        "name": "Start-up date",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "software_version": {
+        "name": "Software version",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "last_error": {
+        "name": "Last error",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "raw_water_hardness": {
+        "name": "Raw water hardness",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "soft_water_hardness": {
+        "name": "Soft water hardness setpoint",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "regeneration_time": {
+        "name": "Regeneration times",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "maintenance_interval": {
+        "name": "Maintenance interval",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "nominal_flow": {
+        "name": "Nominal flow rate",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "water_yesterday": {
+        "name": "Water usage yesterday",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "lime_retained_yesterday": {
+        "name": "Lime retained yesterday",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "salt_yesterday": {
+        "name": "Salt usage yesterday",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "salt_daily_sum": {
+        "name": "Salt usage sum of daily values",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "calculated_water_consumption": {
+        "name": "Calculated water consumption",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "average_flow_rate": {
+        "name": "Average flow rate (last interval)",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "data_last_changed": {
+        "name": "Data last changed",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "regeneration_phase": {
+        "name": "Regeneration phase",
+        "state": {
+          "inactive": "Inactive",
+          "fill_salt_tank": "Filling salt tank",
+          "salting": "Salting",
+          "displacement": "Displacement",
+          "backwashing": "Backwashing",
+          "washing_out": "Washing out",
+          "other": "Other"
+        },
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "next_regeneration_window": {
+        "name": "Next regeneration window",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "last_regeneration": {
+        "name": "Last regeneration",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "next_maintenance": {
+        "name": "Next maintenance",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "next_inspection": {
+        "name": "Next inspection",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "maintenance_days_remaining": {
+        "name": "Days until maintenance",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "inspection_days_remaining": {
+        "name": "Days until inspection",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "setting_changes": {
+        "name": "Changed settings",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mrescapa2": {
+        "name": "Remaining capacity exchanger 2",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mresidcap2": {
+        "name": "Remaining capacity exchanger 2 percent",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mflow2": {
+        "name": "Flow exchanger 2",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "mflowblend": {
+        "name": "Blended flow",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "last_poll": {
+        "name": "Last poll",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    },
+    "binary_sensor": {
+      "has_error": {
+        "name": "Device error",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "salt_warning": {
+        "name": "Salt warning",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "regeneration_running": {
+        "name": "Regeneration running",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    },
+    "number": {
+      "led_brightness": {
+        "name": "LED ring brightness",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    },
+    "switch": {
+      "live_mode": {
+        "name": "Live mode (5 min)",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "track_regeneration": {
+        "name": "Track regeneration live",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "buzzer": {
+        "name": "Signal on failure",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "iq_mode": {
+        "name": "iQ-Mode",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "led_ring_permanent": {
+        "name": "LED ring permanently on",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "led_ring_failure": {
+        "name": "LED ring on failure",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "led_ring_message": {
+        "name": "LED ring on message",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "led_ring_flow": {
+        "name": "LED ring on flow",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    },
+    "date": {
+      "last_maintenance": {
+        "name": "Last maintenance",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "last_inspection": {
+        "name": "Last inspection",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    },
+    "button": {
+      "maintenance_done": {
+        "name": "Maintenance done",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "inspection_done": {
+        "name": "Inspection done",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      },
+      "refresh_settings": {
+        "name": "Fetch settings now",
+        "state_attributes": {
+          "description": {
+            "name": "Description"
+          },
+          "daily": {
+            "name": "Daily values"
+          },
+          "errors": {
+            "name": "Errors"
+          },
+          "consumed_liters": {
+            "name": "Consumed since last poll (L)"
+          },
+          "raw_value": {
+            "name": "Raw value"
+          },
+          "days": {
+            "name": "Days"
+          },
+          "first_day": {
+            "name": "First day"
+          },
+          "regeneration_count": {
+            "name": "Regeneration count"
+          },
+          "history": {
+            "name": "History"
+          },
+          "changes": {
+            "name": "Changes"
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "command_failed": {
+      "message": "Grünbeck cloud command failed: {error}"
+    }
+  },
+  "device": {
+    "consumption": {
+      "name": "Grünbeck consumption"
+    },
+    "settings": {
+      "name": "Grünbeck settings"
+    },
+    "daily": {
+      "name": "Grünbeck daily values (cloud)"
+    },
+    "maintenance": {
+      "name": "Grünbeck maintenance"
+    }
   }
 }

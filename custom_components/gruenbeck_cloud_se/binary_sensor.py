@@ -24,10 +24,13 @@ async def async_setup_entry(
         config_entry.entry_id
     ]
 
-    entities = [
+    entities: list[BinarySensorEntity] = [
         GruenbeckErrorBinarySensor(coordinator),
-        GruenbeckSaltWarningBinarySensor(coordinator),
+        GruenbeckRegenerationRunningBinarySensor(coordinator),
     ]
+    # The softliQ SE18 has no salt level sensor
+    if coordinator.features.salt_sensor:
+        entities.append(GruenbeckSaltWarningBinarySensor(coordinator))
 
     async_add_entities(entities)
 
@@ -36,7 +39,6 @@ class GruenbeckErrorBinarySensor(GruenbeckEntity, BinarySensorEntity):
     """Binary sensor for Grünbeck device error state."""
 
     _attr_device_class = BinarySensorDeviceClass.PROBLEM
-    _attr_name = "Device Error"
 
     def __init__(self, coordinator: GruenbeckDataUpdateCoordinator) -> None:
         """Initialize the error sensor."""
@@ -52,7 +54,6 @@ class GruenbeckSaltWarningBinarySensor(GruenbeckEntity, BinarySensorEntity):
     """Binary sensor for Grünbeck salt range warning."""
 
     _attr_device_class = BinarySensorDeviceClass.PROBLEM
-    _attr_name = "Salt Warning"
 
     def __init__(self, coordinator: GruenbeckDataUpdateCoordinator) -> None:
         """Initialize the salt warning sensor."""
@@ -68,3 +69,24 @@ class GruenbeckSaltWarningBinarySensor(GruenbeckEntity, BinarySensorEntity):
         if isinstance(val, bool):
             return not val
         return False
+
+
+class GruenbeckRegenerationRunningBinarySensor(GruenbeckEntity, BinarySensorEntity):
+    """Binary sensor showing a running regeneration (at polling resolution)."""
+
+    _attr_device_class = BinarySensorDeviceClass.RUNNING
+
+    def __init__(self, coordinator: GruenbeckDataUpdateCoordinator) -> None:
+        """Initialize the regeneration sensor."""
+        super().__init__(coordinator, "regeneration_running")
+
+    @property
+    def is_on(self) -> bool | None:
+        """Return true if a regeneration step is active."""
+        val = self.coordinator.data.get("mregstatus")
+        if val is None:
+            return None
+        try:
+            return int(val) != 0
+        except (TypeError, ValueError):
+            return None
